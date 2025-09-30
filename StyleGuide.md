@@ -154,7 +154,14 @@ We do not yet have a finalized plan for handling coupling and cohesion. Our goal
 
 ---
 
-## 6. Whats Left?
+## 6. Helpful Links
+
+Python: https://peps.python.org/pep-0008/ 
+React: https://airbnb.io/javascript/react/ 
+
+---
+
+## 7. Whats Left?
 
 - Final choice of database (SQL vs NoSQL)  
 - Error handling strategy  
