@@ -1,6 +1,6 @@
 # Software Engineering Project
 
-This document establishes conventions for technologies, file organization, naming, and documentation across our project. Following these standards will ensure consistency, readability, and maintainability of our codebase.
+This document serves to collect the organizational and stylistic choice we have considered prior to the beginning of this project.  It will continue to change throughout the process and include changes in tech stack as we develop.
 
 ---
 
@@ -8,7 +8,7 @@ This document establishes conventions for technologies, file organization, namin
 
 ## Tech Stack (Tentatively)
 
-- **Backend:** Python
+- **Backend:** Python (easier to for working the ML model)
 - **Frontend:** React (JavaScript)
 - **Database:** TBD 
 
@@ -18,7 +18,7 @@ This document establishes conventions for technologies, file organization, namin
 
 ### Backend (Python)
 
-The backend will be organized by usage. Controllers will each be placed in their own file, paths/routes will live in separate files, and supporting modules (e.g., utilities) will be grouped by functionality.
+The backend will be organized based on the tool usage. Controllers will each be placed in their own file, paths/routes will be in separate files, and supporting modules (e.g., utilities) will be grouped by functionality and named accordingly.
 
 **Example:**
 ```
@@ -35,7 +35,7 @@ backend/
 
 ### Frontend (React)
 
-The frontend will follow a similar usage-based organization. Pages will be stored in a dedicated folder, utilities in their own folder, contexts in another, and reusable components grouped together.
+The frontend will work using a similar organization structure. Pages will be stored in a dedicated folder, utilities in their own folder, contexts in another, and page components grouped together.
 
 **Example:**
 ```
@@ -85,7 +85,7 @@ function handleLogin(credentials) {
 
 ### Classes
 
-Classes will not be heavily used in this project. If a class is created, the file should only contain that one class, and the file name should match the class name.
+Classes will likely not be heavily used in this project. If a class is created, the file should only contain that one class, and the file name should match the class name.
 
 **Example:**
 `UserManager.js`
@@ -107,7 +107,7 @@ class UserManager {
 
 ### File Headers
 
-Each file must begin with a block comment that explains its purpose, what it contains, and any dependencies.
+Each file must begin with a block comment that explains its purpose, what it contains, and any dependencies (and potentially library tools?).
 
 **Example:**
 ```python
@@ -137,7 +137,7 @@ def get_user(user_id):
 JavaScript:
 ```javascript
 // Sends a login request to the backend
-// Input: credentials (object) -> Output: Promise<Response>
+// Input: credentials (object) -> Output: <Response>
 function loginUser(credentials) {
   return fetch(`${API_URL}/login`, {
     method: "POST",
@@ -150,11 +150,11 @@ function loginUser(credentials) {
 
 ## 5. Cohesion and Coupling
 
-We do not yet have a finalized plan for handling coupling and cohesion. Our **goal** is to maximize cohesion (group related logic together) while minimizing coupling (avoid unnecessary cross-file dependencies). This section will be updated as the project develops.
+We do not yet have a finalized plan for handling coupling and cohesion. Our goal is to maximize cohesion (group related logic together) while minimizing coupling avoid unnecessary cross-file interactions/dependencies. This section will be improve throughout the process especially.
 
 ---
 
-## 6. Future Considerations
+## 6. Whats Left?
 
 - Final choice of database (SQL vs NoSQL)  
 - Error handling strategy  
