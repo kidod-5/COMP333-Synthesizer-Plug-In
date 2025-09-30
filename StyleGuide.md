@@ -8,9 +8,17 @@ This document serves to collect the organizational and stylistic choice we have 
 
 ## Tech Stack (Tentatively)
 
-- **Backend:** Python (easier to for working the ML model)
-- **Frontend:** React (JavaScript)
-- **Database:** TBD 
+- **Backend:**
+  - Python:
+    - PyTorch and/or TensorFlow will be useful for prototyping ML algorithms and training
+  - C++: (for low latency processing (<10ms))
+    - Runs the actual audio engine
+    - Uses JUCE to do buffer processing
+- **Frontend:**
+  - React (JavaScript)
+  - JUCE for basic UI
+  - OpenGL for visualizations
+- **Database:** TBD
 
 ---
 
@@ -122,7 +130,7 @@ Dependencies: auth_controller.py, database.py
 
 ### Function Documentation
 
-Each function must have a short 1–2 line comment describing what it does, along with its inputs and outputs.
+Each function must have a short 1–2 line comment describing what it does, along with its inputs and outputs. Every function signature should have clear and correct type hints. 
 
 **Examples:**
 
@@ -130,7 +138,7 @@ Python:
 ```python
 # Fetches user data from the database
 # Input: user_id (int) -> Output: user object (dict)
-def get_user(user_id):
+def get_user(user_id: int) -> Dict[int, str]:
     ...
 ```
 
