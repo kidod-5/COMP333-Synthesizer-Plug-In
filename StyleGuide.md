@@ -177,3 +177,9 @@ React: https://airbnb.io/javascript/react/
 - Deployment standards (lambda backend, vercel/netfily frontend?)
 
 ---
+
+## 7. Branching
+
+- Branches will be made for creating and debugging major aspects of the webpage
+- There will be at least one active branch relevant to the primary focal points of development at a time
+- Branches will be merged and closed upon completion of a code review and a conclusion made on the development of the tool. 
