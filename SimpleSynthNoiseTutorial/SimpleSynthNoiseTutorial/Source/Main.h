@@ -52,16 +52,24 @@
 class MainContentComponent : public juce::AudioAppComponent {
   public:
     MainContentComponent() {
-        levelSlider.setRange(0.0, 0.25);
-        levelSlider.setTextBoxStyle(juce::Slider::TextBoxRight, false, 100, 20);
-        levelLabel.setText("Noise Level", juce::dontSendNotification);
         
-        addAndMakeVisible (levelSlider);
-        addAndMakeVisible (levelLabel);
-
+        whiteNoiseLevelSlider.setRange(0.0, 0.25);
+        whiteNoiseLevelSlider.setTextBoxStyle(juce::Slider::TextBoxRight, false, 100, 20);
+        whiteNoiseLevelLabel.setText("White Noise Level", juce::dontSendNotification);
+        
+        pinkNoiseLevelSlider.setRange(0.0, 0.25);
+        pinkNoiseLevelSlider.setTextBoxStyle(juce::Slider::TextBoxRight, false, 100, 20);
+        pinkNoiseLevelLabel.setText("Pink Noise Level", juce::dontSendNotification);
+        
+        addAndMakeVisible(whiteNoiseLevelSlider);
+        addAndMakeVisible(whiteNoiseLevelLabel);
+        addAndMakeVisible(pinkNoiseLevelSlider);
+        addAndMakeVisible(pinkNoiseLevelLabel);
+        
         setSize(800, 600);
-        setAudioChannels(0, 2); // no inputs, two outputs
-    }
+        setAudioChannels(0, 2);
+        
+        }
 
     ~MainContentComponent() override {
         shutdownAudio();
@@ -83,27 +91,48 @@ class MainContentComponent : public juce::AudioAppComponent {
     }
 
     void getNextAudioBlock(const juce::AudioSourceChannelInfo &bufferToFill) override {
-        float level = (float)levelSlider.getValue();
-        NoiseGenerator::whiteNoiseGenerator(*bufferToFill.buffer,
-                                      bufferToFill.startSample,
-                                      bufferToFill.numSamples,
-                                      level);
-//          NoiseGenerator::pinkNoiseGenerator(*bufferToFill.buffer,
-//                                        bufferToFill.startSample,
-//                                        bufferToFill.numSamples,
-//                                        level);
-//        
+        
+        auto* buffer = bufferToFill.buffer;
+        buffer->clear(bufferToFill.startSample, bufferToFill.numSamples);
+        float whiteNoiseLevel = (float)whiteNoiseLevelSlider.getValue();
+        float pinkNoiseLevel = (float)pinkNoiseLevelSlider.getValue();
+        
+        juce::AudioBuffer<float> temp(buffer->getNumChannels(), bufferToFill.numSamples);
+        
+        // White noise buffer
+        temp.clear();
+        NoiseGenerator::whiteNoiseGenerator(temp, 0, bufferToFill.numSamples, whiteNoiseLevel);
+        for (int channel = 0; channel < buffer->getNumChannels(); ++channel) {
+            buffer->addFrom(channel, bufferToFill.startSample, temp, channel, 0, bufferToFill.numSamples);
+        }
+        
+        // Pink noise buffer
+        temp.clear();
+        NoiseGenerator::pinkNoiseGenerator(temp, 0, bufferToFill.numSamples, pinkNoiseLevel);
+        for (int channel = 0; channel < buffer->getNumChannels(); ++channel) {
+            buffer->addFrom(channel, bufferToFill.startSample, temp, channel, 0, bufferToFill.numSamples);
+        }
+        
     }
     
     void resized() override {
-        levelLabel.setBounds(10, 10, 90, 20);
-        levelSlider.setBounds(100, 10, getWidth()-110, 20);
+        int labelWidth = 100;
+        int sliderHeight = 20;
+        int y = 10;
+        
+        whiteNoiseLevelLabel.setBounds(10, y, labelWidth, sliderHeight);
+        whiteNoiseLevelSlider.setBounds(120, y, getWidth() - 130, sliderHeight);
+        
+        y += 40;
+        
+        pinkNoiseLevelLabel.setBounds(10, y, labelWidth, sliderHeight);
+        pinkNoiseLevelSlider.setBounds(120, y, getWidth() - 130, sliderHeight);
     }
 
   private:
     juce::Random random;
-    juce::Slider levelSlider;
-    juce::Label levelLabel;
+    juce::Slider whiteNoiseLevelSlider, pinkNoiseLevelSlider;
+    juce::Label whiteNoiseLevelLabel, pinkNoiseLevelLabel;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(MainContentComponent)
 };
