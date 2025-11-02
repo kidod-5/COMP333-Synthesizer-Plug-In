@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<JUCERPROJECT id="DisQaA" name="NewProject" projectType="audioplug" useAppConfig="0"
-              addUsingNamespaceToJuceHeader="0" jucerFormatVersion="1" pluginCharacteristicsValue="pluginProducesMidiOut,pluginWantsMidiIn">
-  <MAINGROUP id="Am3Hfm" name="NewProject">
+<JUCERPROJECT id="DisQaA" name="MLSynth" projectType="audioplug" useAppConfig="0"
+              addUsingNamespaceToJuceHeader="0" jucerFormatVersion="1" pluginCharacteristicsValue="pluginProducesMidiOut,pluginWantsMidiIn"
+              pluginVST3Category="Fx,Instrument">
+  <MAINGROUP id="Am3Hfm" name="MLSynth">
     <GROUP id="{0AC1EA7E-2354-FDA0-171D-6A1571D5BF0A}" name="Source">
       <FILE id="ZOsxWI" name="PluginProcessor.cpp" compile="1" resource="0"
             file="Source/PluginProcessor.cpp" xcodeResource="0"/>
