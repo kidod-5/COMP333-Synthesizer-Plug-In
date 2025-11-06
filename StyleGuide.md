@@ -180,6 +180,7 @@ React: https://airbnb.io/javascript/react/
 
 ## 7. Branching
 
-- Branches will be made for creating and debugging major aspects of the webpage
+- Branches will be made for creating and debugging major aspects (adding features, pages, functionality etc. as it is currently being developed) of the webpage
 - There will be at least one active branch relevant to the primary focal points of development at a time
+- Additionally a continuous development branch will be kept active and reviewed as bugs are discovered and minor additions are made to features.  This one will be used to retroactively solve these issues.
 - Branches will be merged and closed upon completion of a code review and a conclusion made on the development of the tool. 

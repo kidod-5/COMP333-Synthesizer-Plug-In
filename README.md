@@ -46,7 +46,22 @@ Milestone 1: https://docs.google.com/document/d/1Ckj0KGufHaUpQLS1IokM4mh54LC3KgS
 Style guide: https://github.com/kidod-5/COMP333-Synthesizer-Plug-In/blob/main/StyleGuide.md
 
 
-## User Instructions
+
+
+## User Instructions 
+
+Currently we are in the earliest stages of development and so there is currently no version open to the public.  As we develop further we will provide the instructions on how to access the website and use the available tools
+
+
+
+## Developer Instructions
+
+Note:  Users will need access to the Node/Node Package Manager, Python and JUCE/PROJUCER.  Links to those will be available here (Make sure to follow the instructions for your appropriate operating system when downloading):
+
+Python: https://www.python.org/downloads/ 
+Node(JS): https://nodejs.org/en/download 
+JUCE: https://juce.com/download/ 
+
 
 1. Open the GitHub repository
 2. Press the green button that says “Code”
@@ -72,7 +87,8 @@ Style guide: https://github.com/kidod-5/COMP333-Synthesizer-Plug-In/blob/main/St
 4. Run 'flask run'
 5. You should see something like 'Running on http://127.0.0.1:5000'. Copy and paste link into your preferred web browser to see the output.
 
-
+### Running JUCE:
+--
 
 
 ## Contributers
