@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <JUCERPROJECT id="TUQQtQ" name="MLPlugIn" projectType="audioplug" useAppConfig="0"
-              addUsingNamespaceToJuceHeader="0" jucerFormatVersion="1" pluginFormats="buildVST3">
+              addUsingNamespaceToJuceHeader="0" jucerFormatVersion="1" pluginFormats="buildAU,buildVST3">
   <MAINGROUP id="OmPHff" name="MLPlugIn">
     <GROUP id="{0BC53FC8-6A13-114F-DB4B-643A354EDD22}" name="AudioGenerators">
       <FILE id="r0VFtA" name="Noise.h" compile="0" resource="0" file="Source/AudioGenerators/Noise.h"/>
