@@ -50,9 +50,7 @@ Style guide: https://github.com/kidod-5/COMP333-Synthesizer-Plug-In/blob/main/St
 
 ## User Instructions 
 
-Currently we are in the earliest stages of development and so there is currently no version open to the public.  As we develop further we will provide the instructions on how to access the website and use the available tools
-
-
+We have a very basic version of the plugin available to the public. To install, simply download the .pkg file, and follow the onscreen instructions. This plugin is available only for Mac DAWs.
 
 ## Developer Instructions
 
