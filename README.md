@@ -33,20 +33,6 @@ JUCE: https://juce.com/download/
 
 1. Run ```cmake -B build -G Xcode``` in the MLPlugIn directory. Inside the build folder, you will see the xcode project.
 
-<!-- 1. Open the ```.projucer``` file in the MLPlugIn folder.
-2. Check in the Exporters --> Xcode --> Debug and the Exporters --> Xcode --> Release folders that the path to the libtorch dependency is set up correctly:
-   1. In Header Search Paths put:
-      1. ./dependencies/libtorch/include
-      2. ./dependencies/libtorch/include/torch/csrc/api/include
-   2. In Extra Library Search Paths put:
-      1. ./dependencies/libtorch/lib
-3. Click the button on the top to open the project in Xcode
-4. Make sure the following files are in Target --> Build Phases --> Link Binary With LIbraries for both the VST3 and AU targets:
-   1. libtorch.dylib
-   2. libc10.dylib
-   3. libtorch_cpu.dylib
-5. In the Xcode file's build settings, for both VST3 and AU, make the library search paths: $(SRCROOT)/dependencies/libtorch/lib -->
-
 ### Running Client folder code:
 
 1. Go to https://nodejs.org and install Node.js, download latest version for your operating system. Skip this step if you already have Node.js installed 
