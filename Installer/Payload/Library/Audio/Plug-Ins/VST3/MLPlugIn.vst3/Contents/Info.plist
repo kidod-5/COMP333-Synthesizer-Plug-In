@@ -9,13 +9,13 @@
 	<key>CFBundleExecutable</key>
 	<string>MLPlugIn</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.yourcompany.MLPlugIn</string>
+	<string>com.dynamicsounds.MLPlugIn</string>
 	<key>CFBundleName</key>
 	<string>MLPlugIn</string>
 	<key>CFBundlePackageType</key>
 	<string>BNDL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0.0</string>
+	<string>0.0.1</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleSupportedPlatforms</key>
@@ -23,7 +23,7 @@
 		<string>MacOSX</string>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1.0.0</string>
+	<string>0.0.1</string>
 	<key>DTCompiler</key>
 	<string>com.apple.compilers.llvm.clang.1_0</string>
 	<key>DTPlatformBuild</key>
@@ -41,7 +41,7 @@
 	<key>DTXcodeBuild</key>
 	<string>17A400</string>
 	<key>LSMinimumSystemVersion</key>
-	<string>10.13</string>
+	<string>26.0</string>
 	<key>NSHighResolutionCapable</key>
 	<true/>
 </dict>

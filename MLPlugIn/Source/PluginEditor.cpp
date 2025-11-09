@@ -9,25 +9,6 @@
 #include "PluginEditor.h"
 #include "PluginProcessor.h"
 
-//==============================================================================
-// MLPlugInAudioProcessorEditor::MLPlugInAudioProcessorEditor(
-//    MLPlugInAudioProcessor &p)
-//    : AudioProcessorEditor(&p), audioProcessor(p) {
-//    // Make sure that before the constructor has finished, you've set the
-//    // editor's size to whatever you need it to be.
-//
-//    setSize(400, 300);
-//
-//    noiseSlider.setSliderStyle(juce::Slider::LinearHorizontal);
-//    noiseSlider.setTextBoxStyle(juce::Slider::TextBoxRight, false, 60, 20);
-//
-//    noiseSliderAttachment =
-//        std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(
-//            audioProcessor.parameters, "noiseAmplitude", noiseSlider);
-//    addAndMakeVisible(noiseSlider);
-//    DBG("Editor constructor called!");
-//}
-
 MLPlugInAudioProcessorEditor::MLPlugInAudioProcessorEditor(
     MLPlugInAudioProcessor &p)
     : AudioProcessorEditor(&p), audioProcessor(p) {

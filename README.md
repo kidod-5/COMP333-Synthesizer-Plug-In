@@ -1,58 +1,12 @@
 # COMP333-Synthesizer-Plug-In
-ML backend Music synthesizing tool 
+ML backend Music synthesizing tool
 
-## Issues
-
-### High Priority
-
-### Low Priority
-
-- [ ] Front-end
-  - [ ] Waveform visualizer from audio
-  - [ ] Overall design and structure
-- [ ] Back- to-Front Interface
-  - [ ] Working sliders and knobs
-    - [ ] Attack
-    - [ ] Delay
-    - [ ] LFO
-    - [ ] Volume
-    - [ ] Wave type (sine, square, saw, triangle)
-- [ ] Back-end
-  - [ ] Simple sound generator which has changeable parameters
-- [ ] Other
-  - [ ] Identify ML model
-
-### Medium Priority
-
-- [ ] Parameters
-  - [ ] Pan
-  - [ ] Noise Generator
-  - [ ] Filter
-  - [ ] LFO
-  - [ ] Reverb
-- [ ] Front-end
-  - [ ] More abstract visualizer
-- [ ] Back-end
-  - [ ] Preset/Session management
-
-### Low Priority
-- [ ] Parameters
-  - [ ] MIDI
-- [ ] Back-to-Front Interface
-  - [ ] Techinal vocab to vernacular mapping (happiness knob changes x,y,z paraameters using a formula, etc)
-- [ ] Other
-  - [ ] Help assistant (for beginners)
 Milestone 1: https://docs.google.com/document/d/1Ckj0KGufHaUpQLS1IokM4mh54LC3KgSbybEukBqg-gc/edit?tab=t.0#heading=h.3vjma1ynrl6f
 Style guide: https://github.com/kidod-5/COMP333-Synthesizer-Plug-In/blob/main/StyleGuide.md
 
+## User Instructions
 
-
-
-## User Instructions 
-
-Currently we are in the earliest stages of development and so there is currently no version open to the public.  As we develop further we will provide the instructions on how to access the website and use the available tools
-
-
+We have a very basic version of the plugin available to the public. To install, simply download the .pkg file, and follow the onscreen instructions. This plugin is available only for Mac DAWs.
 
 ## Developer Instructions
 
@@ -70,7 +24,29 @@ JUCE: https://juce.com/download/
 5. Open terminal
 6. To create a local copy of the repository, type "git clone " and then paste the HTTPS url
 7. Now that you have a local repository downloaded,open the folder in your terminal and cd into the folder
- 
+
+### To set up libtorch
+
+1. Run the ```install_dependencies.sh``` script. This will install libtorch in the MLPlugIn/dependencies directory.
+
+### To set up Xcode Project
+
+1. Run ```cmake -B build -G Xcode``` in the MLPlugIn directory. Inside the build folder, you will see the xcode project.
+
+<!-- 1. Open the ```.projucer``` file in the MLPlugIn folder.
+2. Check in the Exporters --> Xcode --> Debug and the Exporters --> Xcode --> Release folders that the path to the libtorch dependency is set up correctly:
+   1. In Header Search Paths put:
+      1. ./dependencies/libtorch/include
+      2. ./dependencies/libtorch/include/torch/csrc/api/include
+   2. In Extra Library Search Paths put:
+      1. ./dependencies/libtorch/lib
+3. Click the button on the top to open the project in Xcode
+4. Make sure the following files are in Target --> Build Phases --> Link Binary With LIbraries for both the VST3 and AU targets:
+   1. libtorch.dylib
+   2. libc10.dylib
+   3. libtorch_cpu.dylib
+5. In the Xcode file's build settings, for both VST3 and AU, make the library search paths: $(SRCROOT)/dependencies/libtorch/lib -->
+
 ### Running Client folder code:
 
 1. Go to https://nodejs.org and install Node.js, download latest version for your operating system. Skip this step if you already have Node.js installed 

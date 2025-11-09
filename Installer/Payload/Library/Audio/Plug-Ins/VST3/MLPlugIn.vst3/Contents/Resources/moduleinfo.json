@@ -1,9 +1,9 @@
 {
   "Name": "MLPlugIn",
-  "Version": "1.0.0",
+  "Version": "0.0.1",
   "Factory Info": {
-    "Vendor": "yourcompany",
-    "URL": "www.yourcompany.com",
+    "Vendor": "dynamicsounds",
+    "URL": "",
     "E-Mail": "",
     "Flags": {
       "Unicode": true,
@@ -13,11 +13,11 @@
   },
   "Classes": [
     {
-      "CID": "ABCDEF019182FAEB4D616E7554757171",
+      "CID": "ABCDEF019182FAEB5461703152656730",
       "Category": "Audio Module Class",
       "Name": "MLPlugIn",
-      "Vendor": "yourcompany",
-      "Version": "1.0.0",
+      "Vendor": "dynamicsounds",
+      "Version": "0.0.1",
       "SDKVersion": "VST 3.7.12",
       "Sub Categories": [
         "Fx",
@@ -28,27 +28,15 @@
       ],
     },
     {
-      "CID": "ABCDEF011234ABCD4D616E7554757171",
+      "CID": "ABCDEF011234ABCD5461703152656730",
       "Category": "Component Controller Class",
       "Name": "MLPlugIn",
-      "Vendor": "yourcompany",
-      "Version": "1.0.0",
+      "Vendor": "dynamicsounds",
+      "Version": "0.0.1",
       "SDKVersion": "VST 3.7.12",
       "Sub Categories": [
         "Fx",
       ],
-      "Class Flags": 0,
-      "Cardinality": 2147483647,
-      "Snapshots": [
-      ],
-    },
-    {
-      "CID": "ABCDEF01C0DEF00D4D616E7554757171",
-      "Category": "Plugin Compatibility Class",
-      "Name": "MLPlugIn",
-      "Vendor": "yourcompany",
-      "Version": "1.0.0",
-      "SDKVersion": "VST 3.7.12",
       "Class Flags": 0,
       "Cardinality": 2147483647,
       "Snapshots": [

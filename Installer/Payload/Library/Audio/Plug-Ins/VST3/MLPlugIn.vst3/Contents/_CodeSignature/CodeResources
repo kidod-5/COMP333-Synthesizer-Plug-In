@@ -4,29 +4,18 @@
 <dict>
 	<key>files</key>
 	<dict>
-		<key>Resources/RecentFilesMenuTemplate.nib</key>
-		<data>
-		4cEN55flubpq9bxeGSBG3zMPYQw=
-		</data>
 		<key>Resources/moduleinfo.json</key>
 		<data>
-		6g6uZYOUzNntIX+G7aRBnFP0Nng=
+		dqTOfxp9VChqvqJNxVmTZMUrqOM=
 		</data>
 	</dict>
 	<key>files2</key>
 	<dict>
-		<key>Resources/RecentFilesMenuTemplate.nib</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			cY60xaOlVk3YMq6aNs9knz7yV86JbdkhaT7rYQG9AIo=
-			</data>
-		</dict>
 		<key>Resources/moduleinfo.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			gLb9xNgloBhafRUfRlZm07w+hLvXXPG3CLx9PSu5n1M=
+			n6Q4d78oA+8/nQobMl6JTB3KGo8qQiQWjIpWEMy+dXE=
 			</data>
 		</dict>
 	</dict>

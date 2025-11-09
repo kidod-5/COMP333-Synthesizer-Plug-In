@@ -6,12 +6,12 @@ Note how the dierctory matches how it works in the system directory.
 
 1. Copy the VST3 and AU file into the correct sub-directory:
 ```
-cp -R "MLPlugIn/Builds/MacOSX/build/Release/MLPlugIn.component" \
-      Installer/Payload/Library/Audio/Plug-Ins/VST3/
+cp -R "MLPlugIn/build/MLPlugIn_artefacts/Debug/AU/MLPlugIn.component" \
+      Installer/Payload/Library/Audio/Plug-Ins/Components/
 
 ```
 ```
-cp -R "MLPlugIn/Builds/MacOSX/build/Release/MLPlugIn.vst3" \
+cp -R "MLPlugIn/build/MLPlugIn_artefacts/Debug/VST3/MLPlugIn.vst3" \
       Installer/Payload/Library/Audio/Plug-Ins/VST3/
 ```
 
