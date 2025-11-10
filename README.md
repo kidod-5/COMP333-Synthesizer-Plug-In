@@ -85,8 +85,12 @@ JUCE: https://juce.com/download/
 4. Run 'flask run'
 5. You should see something like 'Running on http://127.0.0.1:5000'. Copy and paste link into your preferred web browser to see the output.
 
-### Running JUCE:
---
+### Running Plug-in:
+1. within the build folder, download the .pkg file containing the build for the synthesizer
+2. Opening the package should allow the plug-in to open using a compatible software* (e.g garageband).
+3. Once it it open feel free to test out the limited range of options (for now!)
+
+*Note: this software is intended for mac users and may not be directly compatible with other devices as of now.
 
 
 ## Contributers
