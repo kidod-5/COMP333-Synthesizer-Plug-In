@@ -10,7 +10,8 @@ We have a very basic version of the plugin available to the public. To install, 
 
 ## Developer Instructions
 
-Note:  Users will need access to the Node/Node Package Manager, Python and JUCE/PROJUCER.  Links to those will be available here (Make sure to follow the instructions for your appropriate operating system when downloading):
+Note: Users will need access to the Node/Node Package Manager, Python and JUCE/PROJUCER.  Links to those will be available here (Make sure to follow the instructions for your appropriate operating system when downloading):
+Note: This project can only be built on Apple Silicon Macs.
 
 Python: https://www.python.org/downloads/ 
 Node(JS): https://nodejs.org/en/download 
