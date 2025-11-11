@@ -1,12 +1,18 @@
 cmake_minimum_required(VERSION 3.24)
-
-# Change to your project name
+set(CMAKE_OSX_ARCHITECTURES "arm64")
 project(MLPlugIn VERSION 0.0.1)
-
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_XCODE_GENERATE_SCHEME OFF)
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
+
+# For libtorch
+set(CMAKE_PREFIX_PATH "${CMAKE_CURRENT_SOURCE_DIR}/dependencies/libtorch")
+find_package(Torch REQUIRED)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${TORCH_CXX_FLAGS}")
+#add_executable(${PROJECT_NAME} main.cpp)
+#target_link_libraries(${PROJECT_NAME} "${TORCH_LIBRARIES}")
+#set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 17)
 
 # We're going to use CPM as our package manager to bring in JUCE
 # Check to see if we have CPM installed already.  Bring it in if we don't.
@@ -33,7 +39,9 @@ set(SourceFiles
         Source/PluginEditor.h
         Source/PluginProcessor.cpp
         Source/PluginProcessor.h
-	Source/AudioGenerators/Noise.h
+        Source/AudioGenerators/Noise.h
+        Source/Libtorch/test_libtorch.cpp
+        Source/Libtorch/test_libtorch.h
 )
 
 # Change these to your own preferences
@@ -49,7 +57,7 @@ juce_add_plugin(${PROJECT_NAME}
         PLUGIN_MANUFACTURER_CODE Tap1
         PLUGIN_CODE Reg0
         FORMATS VST3 AU Standalone
-        PRODUCT_NAME "MLPlugIn"        
+        PRODUCT_NAME "MLPlugIn"
 )
 
 # How we want our SourceFiles to appear in our IDE
@@ -82,5 +90,8 @@ target_link_libraries(${PROJECT_NAME}
         juce::juce_recommended_config_flags
         juce::juce_recommended_lto_flags
         juce::juce_recommended_warning_flags
+        ${TORCH_LIBRARIES}
 )
 
+# Prevent runtime errors on macOS/Linux (Torch shared libs)
+set_property(TARGET ${PROJECT_NAME} PROPERTY RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR})
