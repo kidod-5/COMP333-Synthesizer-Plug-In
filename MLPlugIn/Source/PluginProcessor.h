@@ -8,6 +8,8 @@
 
 #pragma once
 
+#include <torch/torch.h>
+
 #include "AudioGenerators/Noise.h"
 
 #include <juce_audio_processors/juce_audio_processors.h>
@@ -64,5 +66,8 @@ class MLPlugInAudioProcessor : public juce::AudioProcessor {
 
   private:
     //==============================================================================
+    torch::jit::script::Module model;
+    std::atomic<bool> isModelLoaded{false};
+    
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(MLPlugInAudioProcessor)
 };

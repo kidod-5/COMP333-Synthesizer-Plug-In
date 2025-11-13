@@ -40,8 +40,10 @@ set(SourceFiles
         Source/PluginProcessor.cpp
         Source/PluginProcessor.h
         Source/AudioGenerators/Noise.h
-        Source/Libtorch/test_libtorch.cpp
-        Source/Libtorch/test_libtorch.h
+        Source/RAVE/test_libtorch.cpp
+        Source/RAVE/test_libtorch.h
+	Source/RAVE/rave.cpp
+	Source/RAVE/rave.h
 )
 
 # Change these to your own preferences
