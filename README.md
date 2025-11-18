@@ -8,6 +8,8 @@ Style guide: https://github.com/kidod-5/COMP333-Synthesizer-Plug-In/blob/main/St
 
 We have a very basic version of the plugin available to the public. To install, simply download the .pkg file, and follow the onscreen instructions. This plugin is available only for Mac DAWs.
 
+Note for Peer Reviewers: To be able to use this, you must open a DAW. Most Macs come pre installed with GarageBand, and you should be able to access it there under audio effects in your track mixer.
+
 ## Developer Instructions
 
 Note: Users will need access to the Node/Node Package Manager, Python and JUCE/PROJUCER.  Links to those will be available here (Make sure to follow the instructions for your appropriate operating system when downloading):
