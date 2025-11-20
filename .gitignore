@@ -1,0 +1,27 @@
+# JUCE build folders
+Builds/
+*.jucer.user
+*.jucer
+DerivedData/
+*.xcworkspace
+*.xcuserdata
+*.xcodeproj/project.xcworkspace
+*.xcodeproj/xcuserdata/
+
+# Binary audio files
+*.wav
+*.aiff
+*.mp3
+
+# TorchScript files
+*.ts
+
+# Libtorch folder (we'll download it instead of committing)
+libtorch/
+
+# macOS system files
+.DS_Store
+
+# Python artifacts (optional if you have scripts)
+__pycache__/
+*.pyc
