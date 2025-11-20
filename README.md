@@ -9,6 +9,7 @@ Style guide: https://github.com/kidod-5/COMP333-Synthesizer-Plug-In/blob/main/St
 We have a very basic version of the plugin available to the public. To install, simply download the .pkg file, and follow the onscreen instructions. This plugin is available only for Mac DAWs.
 
 Note for Peer Reviewers: To be able to use this, you must open a DAW. Most Macs come pre installed with GarageBand, and you should be able to access it there under audio effects in your track mixer.
+The plugin is stil not ready and it crashes, but we are working on it!
 
 ## Developer Instructions
 
@@ -52,8 +53,12 @@ JUCE: https://juce.com/download/
 4. Run 'flask run'
 5. You should see something like 'Running on http://127.0.0.1:5000'. Copy and paste link into your preferred web browser to see the output.
 
-### Running JUCE:
---
+### Running Plug-in:
+1. within the build folder, download the .pkg file containing the build for the synthesizer
+2. Opening the package should allow the plug-in to open using a compatible software* (e.g garageband).
+3. Once it it open feel free to test out the limited range of options (for now!)
+
+*Note: this software is intended for mac users and may not be directly compatible with other devices as of now.
 
 
 ## Contributers
