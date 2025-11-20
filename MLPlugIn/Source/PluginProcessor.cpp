@@ -46,10 +46,10 @@ MLPlugInAudioProcessor::MLPlugInAudioProcessor()
 //        testLibtorch();
 //    }).detach();
     
-    // --- Load pretrained model ---
-    std::thread([this]() {
-        model = loadTorchScriptModel("../../../RAVE_models/vintage.ts");
-    }).detach();
+    // --- Load pretrained model at startup ---
+//    std::thread([this]() {
+//        model = loadTorchScriptModelAsync("../../../RAVE_models/vintage.ts");
+//    }).detach();
 }
 
 MLPlugInAudioProcessor::~MLPlugInAudioProcessor() {}
@@ -107,6 +107,7 @@ void MLPlugInAudioProcessor::prepareToPlay(double sampleRate,
                                            int samplesPerBlock) {
     // Use this method as the place to do any pre-playback
     // initialisation that you need..
+    modelManager.loadAsync("../../../RAVE_models/vintage.ts");
 }
 
 void MLPlugInAudioProcessor::releaseResources() {
@@ -140,56 +141,91 @@ bool MLPlugInAudioProcessor::isBusesLayoutSupported(
 }
 #endif
 
-void MLPlugInAudioProcessor::processBlock(juce::AudioBuffer<float> &buffer,
-                                          juce::MidiBuffer &midiMessages) {
-    juce::ScopedNoDenormals noDenormals;
-    auto totalNumInputChannels = getTotalNumInputChannels();
-    auto totalNumOutputChannels = getTotalNumOutputChannels();
-    
-    const int numSamples = buffer.getNumSamples();
+//void MLPlugInAudioProcessor::processBlock(juce::AudioBuffer<float> &buffer,
+//                                          juce::MidiBuffer &midiMessages) {
+//    juce::ScopedNoDenormals noDenormals;
+//    auto totalNumInputChannels = getTotalNumInputChannels();
+//    auto totalNumOutputChannels = getTotalNumOutputChannels();
+//    const int numSamples = buffer.getNumSamples();
+//
+//    // In case we have more outputs than inputs, this code clears any output
+//    // channels that didn't contain input data, (because these aren't
+//    // guaranteed to be empty - they may contain garbage).
+//    // This is here to avoid people getting screaming feedback
+//    // when they first compile a plugin, but obviously you don't need to keep
+//    // this code if your algorithm always overwrites all the output channels.
+//    
+//    // --- To clear ---
+//    for (auto ch = totalNumInputChannels; ch < totalNumOutputChannels; ++ch)
+//        buffer.clear(ch, 0, numSamples);
+//    
+//    // --- Pretrained model ---
+//    
+//    auto model = modelManager.getModel();
+//    if (!model) { buffer.clear(); return; }
+//        
+//    torch::NoGradGuard noGrad;
+//    
+//    torch::Tensor inputTensor = audioBufferToTensor(buffer);
+//    torch::Tensor outputTensor = model->forward({inputTensor}).toTensor();
+//    tensorToAudioBuffer(outputTensor, buffer);
+//    
+//    // --- Noise parameters ---
+////    float noiseAmp = noiseAmplitudeParam->load();
+////    int noiseType = static_cast<int>(noiseTypeParam->load());
+////
+////    if (noiseType == 0)
+////        NoiseGenerator::whiteNoiseGenerator(buffer, 0, numSamples,
+////                                            noiseAmp);
+////    else if (noiseType == 1) NoiseGenerator::pinkNoiseGenerator(
+////        buffer, 0, numSamples, noiseAmp);
+//
+//    //    // This is the place where you'd normally do the guts of your plugin's
+//    //    // audio processing...
+//    //    // Make sure to reset the state if your inner loop is processing
+//    //    // the samples and the outer loop is handling the channels.
+//    //    // Alternatively, you can process the samples with the channels
+//    //    // interleaved by keeping the same state.
+//    //    for (int channel = 0; channel < totalNumInputChannels; ++channel)
+//    //    {
+//    //        auto* channelData = buffer.getWritePointer (channel);
+//    //
+//    //        // ..do something to the data...
+//    //    }
+// }
 
-    // In case we have more outputs than inputs, this code clears any output
-    // channels that didn't contain input data, (because these aren't
-    // guaranteed to be empty - they may contain garbage).
-    // This is here to avoid people getting screaming feedback
-    // when they first compile a plugin, but obviously you don't need to keep
-    // this code if your algorithm always overwrites all the output channels.
-    
-    // --- To clear ---
-    for (auto i = totalNumInputChannels; i < totalNumOutputChannels; ++i)
-        buffer.clear(i, 0, numSamples);
-    
-    // --- Pretrained model ---
-    if (!isModelLoaded.load()) {
-        buffer.clear();
-        return;
+
+void MLPlugInAudioProcessor::processBlock(juce::AudioBuffer<float> &buffer, juce::MidiBuffer &midiMessages)
+{
+    int numSamples = buffer.getNumSamples();
+    for (int ch = 0; ch < buffer.getNumChannels(); ++ch)
+    {
+        auto* in = buffer.getReadPointer(ch);
+        auto* out = buffer.getWritePointer(ch);
+
+        for (int i = 0; i < numSamples; ++i)
+        {
+            inputBuffer.setSample(ch, writePos, in[i]);
+            writePos++;
+
+            if (writePos == blockSize)
+            {
+                // Process 2048-sample block
+                torch::Tensor inputTensor = audioBufferToTensor(inputBuffer);
+                auto model = modelManager.getModel();
+                if (model)
+                {
+                    torch::NoGradGuard nograd;
+                    auto outputTensor = model->forward({inputTensor}).toTensor();
+                    tensorToAudioBuffer(outputTensor, inputBuffer);
+                }
+                writePos = 0;
+            }
+
+            // Output current sample
+            out[i] = inputBuffer.getSample(ch, writePos % blockSize);
+        }
     }
-    torch::NoGradGuard no_grad;
-    auto input = torch::rand({1, 1, numSamples});
-    auto output = model.forward({input}).toTensor();
-    
-    // --- Noise parameters ---
-    float noiseAmp = noiseAmplitudeParam->load();
-    int noiseType = static_cast<int>(noiseTypeParam->load());
-
-    if (noiseType == 0)
-        NoiseGenerator::whiteNoiseGenerator(buffer, 0, numSamples,
-                                            noiseAmp);
-    else if (noiseType == 1) NoiseGenerator::pinkNoiseGenerator(
-        buffer, 0, numSamples, noiseAmp);
-
-    //    // This is the place where you'd normally do the guts of your plugin's
-    //    // audio processing...
-    //    // Make sure to reset the state if your inner loop is processing
-    //    // the samples and the outer loop is handling the channels.
-    //    // Alternatively, you can process the samples with the channels
-    //    // interleaved by keeping the same state.
-    //    for (int channel = 0; channel < totalNumInputChannels; ++channel)
-    //    {
-    //        auto* channelData = buffer.getWritePointer (channel);
-    //
-    //        // ..do something to the data...
-    //    }
 }
 
 //==============================================================================

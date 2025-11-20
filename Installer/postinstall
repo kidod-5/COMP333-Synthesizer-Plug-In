@@ -1,8 +1,0 @@
-#!/bin/bash
-# Set permissions for VST3
-chmod -R 755 "/Library/Audio/Plug-Ins/VST3/MLPlugIn.vst3"
-
-# Set permissions for AU component
-chmod -R 755 "/Library/Audio/Plug-Ins/Components/MLPlugIn.component"
-
-exit 0

@@ -44,6 +44,8 @@ set(SourceFiles
         Source/RAVE/test_libtorch.h
 	Source/RAVE/rave.cpp
 	Source/RAVE/rave.h
+	Source/RAVE/RaveModelManager.cpp
+	Source/RAVE/RaveModelManager.h
 )
 
 # Change these to your own preferences
