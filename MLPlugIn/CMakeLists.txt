@@ -42,10 +42,12 @@ set(SourceFiles
         Source/AudioGenerators/Noise.h
         Source/RAVE/test_libtorch.cpp
         Source/RAVE/test_libtorch.h
-	Source/RAVE/rave.cpp
-	Source/RAVE/rave.h
-	Source/RAVE/RaveModelManager.cpp
-	Source/RAVE/RaveModelManager.h
+	    Source/RAVE/rave.cpp
+	    Source/RAVE/rave.h
+	    Source/RAVE/RaveModelManager.cpp
+	    Source/RAVE/RaveModelManager.h
+	    Source/RAVE/BlockTypes.h
+	    Source/RAVE/FIFO.h
 )
 
 # Change these to your own preferences

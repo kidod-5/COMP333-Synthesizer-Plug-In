@@ -13,8 +13,8 @@
 #include "AudioGenerators/Noise.h"
 #include "RAVE/RaveModelManager.h"
 
-#include <juce_audio_processors/juce_audio_processors.h>
 #include <juce_audio_basics/juce_audio_basics.h>
+#include <juce_audio_processors/juce_audio_processors.h>
 #include <juce_core/juce_core.h>
 
 //==============================================================================
@@ -35,16 +35,19 @@ class MLPlugInAudioProcessor : public juce::AudioProcessor {
 #endif
 
     void processBlock(juce::AudioBuffer<float> &, juce::MidiBuffer &) override;
-    
-    juce::AudioBuffer<float> inputBuffer;   // buffer to accumulate 2048 samples
+
+    juce::AudioBuffer<float> inputBuffer; // buffer to accumulate 2048 samples
     int writePos = 0;
     constexpr static int blockSize = 2048;
 
     //==============================================================================
-//    float noiseAmplitude = 0.2f;
+    //    float noiseAmplitude = 0.2f;
     std::atomic<float> *noiseAmplitudeParam = nullptr;
     juce::AudioProcessorValueTreeState parameters;
-    std::atomic<float> *noiseTypeParam = nullptr; // 0 = white noise, 1 = pink noise
+    std::atomic<float> *noiseTypeParam =
+        nullptr; // 0 = white noise, 1 = pink noise
+    
+    std::atomic<float> *wetParam = nullptr;
 
     //==============================================================================
     juce::AudioProcessorEditor *createEditor() override;
@@ -74,6 +77,6 @@ class MLPlugInAudioProcessor : public juce::AudioProcessor {
     torch::jit::script::Module model;
     std::atomic<bool> isModelLoaded{false};
     RaveModelManager modelManager;
-    
+
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(MLPlugInAudioProcessor)
 };

@@ -16,7 +16,7 @@ MLPlugInAudioProcessorEditor::MLPlugInAudioProcessorEditor(
 
     noiseTypeBox.addItem("White", 1);
     noiseTypeBox.addItem("Pink", 2);
-    addAndMakeVisible(noiseTypeBox);
+//    addAndMakeVisible(noiseTypeBox);
 
     noiseTypeAttachment = std::make_unique<
         juce::AudioProcessorValueTreeState::ComboBoxAttachment>(
@@ -29,7 +29,7 @@ MLPlugInAudioProcessorEditor::MLPlugInAudioProcessorEditor(
     noiseSlider.setSliderStyle(juce::Slider::LinearHorizontal);
     noiseSlider.setTextBoxStyle(juce::Slider::TextBoxRight, false, 60, 20);
 
-    addAndMakeVisible(noiseSlider);
+//    addAndMakeVisible(noiseSlider);
 
     noiseSliderAttachment =
         std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(
@@ -38,6 +38,17 @@ MLPlugInAudioProcessorEditor::MLPlugInAudioProcessorEditor(
     // Ensure slider reflects the parameter value on creation
     noiseSlider.setValue(*audioProcessor.noiseAmplitudeParam,
                          juce::dontSendNotification);
+
+    wetSlider.setSliderStyle(juce::Slider::RotaryHorizontalVerticalDrag);
+    wetSlider.setTextBoxStyle(juce::Slider::TextBoxBelow, false, 60, 20);
+    addAndMakeVisible(wetSlider);
+
+    wetSliderAttachment =
+        std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(
+            audioProcessor.parameters, "wet", wetSlider);
+
+    // Ensure slider reflects the parameter value on creation
+    wetSlider.setValue(*audioProcessor.wetParam, juce::dontSendNotification);
 }
 
 MLPlugInAudioProcessorEditor::~MLPlugInAudioProcessorEditor() {}
@@ -51,8 +62,8 @@ void MLPlugInAudioProcessorEditor::paint(juce::Graphics &g) {
 
     g.setColour(juce::Colours::white);
     g.setFont(juce::FontOptions(15.0f));
-    g.drawFittedText("ML PlugIn!", getLocalBounds(),
-                     juce::Justification::centred, 1);
+//    g.drawFittedText("ML PlugIn!", getLocalBounds(),
+//                     juce::Justification::centred, 1);
 }
 
 void MLPlugInAudioProcessorEditor::resized() {
@@ -61,7 +72,12 @@ void MLPlugInAudioProcessorEditor::resized() {
     int margin = 40;
     int controlHeight = 40;
     int spacing = 20;
-    
-    noiseTypeBox.setBounds(margin, spacing, getWidth() - 2*margin, controlHeight);
-    noiseSlider.setBounds(margin, spacing + controlHeight, getWidth() - 2*margin, controlHeight);
+
+    noiseTypeBox.setBounds(margin, spacing, getWidth() - 2 * margin,
+                           controlHeight);
+    noiseSlider.setBounds(margin, spacing + controlHeight,
+                          getWidth() - 2 * margin, controlHeight);
+
+    wetSlider.setBounds(margin, spacing + controlHeight,
+                        getWidth() - 2 * margin, controlHeight);
 }
