@@ -111,7 +111,7 @@ void MLPlugInAudioProcessor::prepareToPlay(double sampleRate,
                                            int samplesPerBlock) {
     // Use this method as the place to do any pre-playback
     // initialisation that you need..
-    modelManager.loadAsync("/Users/sam/Documents/Wesleyan/semester_5/software/COMP333-Synthesizer-Plug-In/RAVE_models/vintage.ts");
+    modelManager.loadAsync("/Library/Application Support/dynamicsounds/MLPlugIn/models/vintage.ts");
     modelManager.resetFIFOs();
 }
 
@@ -171,9 +171,7 @@ void MLPlugInAudioProcessor::processBlock(juce::AudioBuffer<float> &buffer,
         bool readyForOutput = false;
 
         float inL = buffer.getReadPointer(0)[sample];
-        float inR = (totalNumInputChannels > 1)
-                        ? buffer.getReadPointer(1)[sample]
-                        : inL;
+        float inR = (totalNumInputChannels > 1) ? buffer.getReadPointer(1)[sample] : inL;
 
         // Push input to model FIFO
         modelManager.pushInputSample(inL, inR, readyForOutput);

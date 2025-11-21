@@ -39,7 +39,7 @@ MLPlugInAudioProcessorEditor::MLPlugInAudioProcessorEditor(
     noiseSlider.setValue(*audioProcessor.noiseAmplitudeParam,
                          juce::dontSendNotification);
 
-    wetSlider.setSliderStyle(juce::Slider::RotaryHorizontalVerticalDrag);
+    wetSlider.setSliderStyle(juce::Slider::LinearHorizontal);
     wetSlider.setTextBoxStyle(juce::Slider::TextBoxBelow, false, 60, 20);
     addAndMakeVisible(wetSlider);
 
@@ -73,11 +73,12 @@ void MLPlugInAudioProcessorEditor::resized() {
     int controlHeight = 40;
     int spacing = 20;
 
-    noiseTypeBox.setBounds(margin, spacing, getWidth() - 2 * margin,
-                           controlHeight);
-    noiseSlider.setBounds(margin, spacing + controlHeight,
-                          getWidth() - 2 * margin, controlHeight);
+    int y = spacing;
+    noiseTypeBox.setBounds(margin, y, getWidth() - 2 * margin, controlHeight);
+    y += controlHeight + spacing;
 
-    wetSlider.setBounds(margin, spacing + controlHeight,
-                        getWidth() - 2 * margin, controlHeight);
+    noiseSlider.setBounds(margin, y, getWidth() - 2 * margin, controlHeight);
+    y += controlHeight + spacing;
+
+    wetSlider.setBounds(margin, y, getWidth() - 2 * margin, controlHeight);
 }

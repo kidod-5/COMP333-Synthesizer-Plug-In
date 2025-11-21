@@ -137,7 +137,7 @@ void RaveModelManager::workerThreadFunc() {
         auto cpuTensor = outputTensor.to(torch::kCPU);
         auto ptr = cpuTensor[0][0].data_ptr<float>();
         memcpy(outBlock.samplesL.data(), ptr, RAVE_BLOCK_SIZE * sizeof(float));
-        memset(outBlock.samplesR.data(), 0, RAVE_BLOCK_SIZE * sizeof(float)); // R-mono
+        memcpy(outBlock.samplesR.data(), ptr, RAVE_BLOCK_SIZE * sizeof(float)); // duplicate L → R
 
         // ---- Push result into output FIFO ----
         if (!outputFIFO.push(outBlock)) {
