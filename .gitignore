@@ -25,3 +25,6 @@ libtorch/
 # Python artifacts (optional if you have scripts)
 __pycache__/
 *.pyc
+
+# Torch library
+tests/torch_venv/
