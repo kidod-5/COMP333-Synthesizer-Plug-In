@@ -33,13 +33,18 @@ class MLPlugInAudioProcessorEditor : public juce::AudioProcessorEditor {
     juce::ComboBox noiseTypeBox;
     std::unique_ptr<juce::AudioProcessorValueTreeState::ComboBoxAttachment>
         noiseTypeAttachment;
-    
+
     juce::Slider noiseSlider;
     std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment>
         noiseSliderAttachment;
-    
+
+    juce::ComboBox modelBox;
+    std::unique_ptr<juce::AudioProcessorValueTreeState::ComboBoxAttachment>
+        modelAttachment;
+
     juce::Slider wetSlider;
-    std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment> wetSliderAttachment;
+    std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment>
+        wetSliderAttachment;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(MLPlugInAudioProcessorEditor)
 };

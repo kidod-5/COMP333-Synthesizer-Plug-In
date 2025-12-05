@@ -35,6 +35,9 @@ MLPlugInAudioProcessor::MLPlugInAudioProcessor()
                   std::make_unique<juce::AudioParameterChoice>(
                       "noiseType", "Noise Type",
                       juce::StringArray{"White", "Pink"}, 0),
+
+//                  std::make_unique<juce::AudioParameterChoice>(
+//                      "modelChoice", "Model", juce::StringArray{"(none)"}, 0),
                   std::make_unique<juce::AudioParameterFloat>(
                       "wet", "Wet", 0.0f, 1.0f, 1.0f)})
 #endif
@@ -42,18 +45,8 @@ MLPlugInAudioProcessor::MLPlugInAudioProcessor()
     noiseAmplitudeParam = parameters.getRawParameterValue("noiseAmplitude");
     noiseTypeParam = parameters.getRawParameterValue("noiseType");
 
+//    modelChoiceParam = parameters.getRawParameterValue("modelChoice");
     wetParam = parameters.getRawParameterValue("wet");
-
-    //    // --- Test Libtorch on a separate thread ---
-    //    std::thread([](){
-    //        testLibtorch();
-    //    }).detach();
-
-    // --- Load pretrained model at startup ---
-    //    std::thread([this]() {
-    //        model =
-    //        loadTorchScriptModelAsync("../../../RAVE_models/vintage.ts");
-    //    }).detach();
 }
 
 MLPlugInAudioProcessor::~MLPlugInAudioProcessor() {}
@@ -106,13 +99,57 @@ const juce::String MLPlugInAudioProcessor::getProgramName(int index) {
 void MLPlugInAudioProcessor::changeProgramName(int index,
                                                const juce::String &newName) {}
 
+void MLPlugInAudioProcessor::scanModelDirectory() {
+    availableModels.clear();
+
+    std::filesystem::path dir(
+        "/Library/Application Support/dynamicsounds/MLPlugIn/models");
+
+    if (!std::filesystem::exists(dir))
+        return;
+
+    for (auto &entry : std::filesystem::directory_iterator(dir)) {
+        if (entry.is_regular_file() && entry.path().extension() == ".ts")
+            availableModels.add(entry.path().filename().string());
+    }
+}
+
+void MLPlugInAudioProcessor::loadSelectedModel(const juce::String &modelName) {
+    selectedModelName = modelName;
+    juce::File modelFile(
+        "/Library/Application Support/dynamicsounds/MLPlugIn/models/" +
+        modelName);
+    if (modelFile.existsAsFile())
+        modelManager.loadAsync(modelFile.getFullPathName().toStdString());
+}
+
+//    auto index = (int)modelChoiceParam->load();
+//
+//    if (auto *choiceParam = dynamic_cast<juce::AudioParameterChoice *>(
+//            parameters.getParameter("modelChoice"))) {
+//        juce::String modelName = choiceParam->choices[index];
+//
+//        juce::File modelFile(
+//            "/Library/Application Support/dynamicsounds/MLPlugIn/models/" +
+//            modelName);
+//
+//        if (modelFile.existsAsFile())
+//            modelManager.loadAsync(modelFile.getFullPathName().toStdString());
+//    }
+// }
+
 //==============================================================================
 void MLPlugInAudioProcessor::prepareToPlay(double sampleRate,
                                            int samplesPerBlock) {
     // Use this method as the place to do any pre-playback
     // initialisation that you need..
-    modelManager.loadAsync("/Library/Application Support/dynamicsounds/MLPlugIn/models/musicnet.ts");
+    scanModelDirectory();
     modelManager.resetFIFOs();
+    if (selectedModelName.isNotEmpty())
+        loadSelectedModel(selectedModelName);
+    //    modelManager.loadAsync("/Library/Application "
+    //                           "Support/dynamicsounds/MLPlugIn/models/musicnet.ts");
+    //    modelManager.resetFIFOs();
 }
 
 void MLPlugInAudioProcessor::releaseResources() {
@@ -171,7 +208,9 @@ void MLPlugInAudioProcessor::processBlock(juce::AudioBuffer<float> &buffer,
         bool readyForOutput = false;
 
         float inL = buffer.getReadPointer(0)[sample];
-        float inR = (totalNumInputChannels > 1) ? buffer.getReadPointer(1)[sample] : inL;
+        float inR = (totalNumInputChannels > 1)
+                        ? buffer.getReadPointer(1)[sample]
+                        : inL;
 
         // Push input to model FIFO
         modelManager.pushInputSample(inL, inR, readyForOutput);
