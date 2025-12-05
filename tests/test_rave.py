@@ -1,171 +1,161 @@
-import torch
-import soundfile as sf
-import torch.nn.functional as F
-
-# -----------------------
-# 1. Load the TorchScript RAVE model
-# -----------------------
-model_path = "../RAVE_models/vintage.ts"
-device = "cuda" if torch.cuda.is_available() else "cpu"
-
-model = torch.jit.load(model_path, map_location=device)
-model.eval().to(device)
-
-rave = model._rave  # internal rave submodule
-
-# -----------------------
-# 2. Load your audio
-# -----------------------
-audio_path = "/Users/sam/Music/Logic/Project 1/Audio Files/njys type beat.aif"
-y, sr = sf.read(audio_path)
-
-# Ensure mono
-if len(y.shape) > 1:
-    y = y.mean(axis=1)
-
-# Convert to torch tensor [batch, channels, samples]
-x = torch.tensor(y, dtype=torch.float32).unsqueeze(0).unsqueeze(0).to(device)
-
-# -----------------------
-# 3. Slice audio into frames
-# -----------------------
-frame_size = 8192
-hop_size = frame_size  # no overlap for simplicity
-batch_size = 16        # required by cached_conv
-
-# Pad audio so total frames is multiple of batch_size
-num_frames = (x.shape[-1] + frame_size - 1) // frame_size
-total_samples = num_frames * frame_size
-pad_length = total_samples - x.shape[-1]
-x_padded = F.pad(x, (0, pad_length))
-
-# Unfold into frames: shape [num_frames, 1, frame_size]
-frames = x_padded.unfold(-1, frame_size, hop_size).squeeze(1)  # [batch, num_frames, frame_size]
-frames = frames.permute(1, 0, 2).reshape(-1, 1, frame_size)    # [num_frames, 1, frame_size]
-
-# -----------------------
-# 4. Process frames in batches of 16
-# -----------------------
-processed_frames = []
-
-for i in range(0, len(frames), batch_size):
-    batch = frames[i:i+batch_size]
-
-    # If batch < 16, repeat to fill batch
-    if batch.shape[0] < batch_size:
-        repeat_count = batch_size - batch.shape[0]
-        batch = torch.cat([batch, batch[:repeat_count]], dim=0)
-
-    with torch.no_grad():
-        # Encode to latent
-        latent = rave.encoder(batch)
-
-        # OPTIONAL: modify latent here
-        # Example: scale latent by 0.5
-        latent = latent * 0.5
-
-        # Decode audio
-        reconstructed = rave.forward(batch)
-
-        # Keep only original frames (ignore repeated ones)
-        reconstructed = reconstructed[:min(batch_size, len(batch))]
-        processed_frames.append(reconstructed)
-
-# -----------------------
-# 5. Combine frames back into waveform
-# -----------------------
-processed_audio = torch.cat(processed_frames, dim=-1)
-processed_audio = processed_audio[:, :, :x.shape[-1]]  # remove padding
-
-print("Processed audio shape:", processed_audio.shape)
-
-# -----------------------
-# 6. Save to file
-# -----------------------
-sf.write("processed_audio.wav", processed_audio.squeeze().cpu().numpy(), sr)
-
-
-
 # import torch
 # import numpy as np
-# import soundfile as sf
-# import torch
+# import sounddevice as sd
+# import tkinter as tk
 
-# # -----------------------
-# # 1. Load your TorchScript model
-# # -----------------------
-# model_path = "../RAVE_models/vintage.ts"
-# device = "cuda" if torch.cuda.is_available() else "cpu"
+# # ------------------------------
+# # 1. Load RAVE model
+# # ------------------------------
+# model_path = "/Users/sam/Documents/Wesleyan/semester_5/software/COMP333-Synthesizer-Plug-In/RAVE_models/musicnet.ts"
+# model = torch.jit.load(model_path)
+# model.eval()
 
-# model = torch.jit.load(model_path, map_location=device)
-# model.eval().to(device)
+# # ------------------------------
+# # 2. Settings
+# # ------------------------------
+# CHANNELS = 16           # input audio channels expected by the model
+# BLOCK_SIZE = 16384      # exact block size we determined earlier
+# LATENT_CHANNELS = 256   # number of latent dimensions
+# LATENT_TIME = 128       # latent time dimension
 
-# rave = model._rave  # internal RAVE submodule
+# # ------------------------------
+# # 3. Generate a test audio block
+# # ------------------------------
+# # You can replace this with actual audio later
+# audio_block = torch.randn(1, CHANNELS, BLOCK_SIZE)
 
-# # -----------------------
-# # 2. Prepare your audio
-# # -----------------------
-# audio_path = "/Users/sam/Music/Logic/Project 1/Audio Files/njys type beat.aif"
-# y, sr = sf.read(audio_path)  # y is numpy array, sr = sample rate
+# with torch.no_grad():
+#     z = model.encoder(audio_block)  # [1, 256, 128]
 
-# # Ensure it's mono
-# if len(y.shape) > 1:
-#     y = y.mean(axis=1)
-
-# # Convert to torch tensor: [batch, channels, samples]
-# x = torch.tensor(y, dtype=torch.float32).unsqueeze(0).unsqueeze(0).to(device)
-
-# # If your audio sample rate isn't 48kHz, resample it first
-# # e.g., using torchaudio or librosa
-
-# # -----------------------
-# # 3. Slice audio into frames
-# # -----------------------
-# frame_size = 8192        # typical RAVE frame size
-# hop_size = frame_size    # no overlap; plugin may use overlap
-# batch_size = 16          # must match cached_conv internal batch/cache
-
-# # pad audio so it divides evenly into frames
-# num_frames = (x.shape[-1] + frame_size - 1) // frame_size
-# pad_length = num_frames * frame_size - x.shape[-1]
-# x_padded = torch.nn.functional.pad(x, (0, pad_length))
-
-# # unfold into frames: shape [num_frames, 1, frame_size]
-# # x_padded shape: [batch, channels, samples] => [1,1,samples]
-# frames = x_padded.unfold(-1, frame_size, hop_size)  # shape [1, 1, num_frames, frame_size]
-
-# # reorder: move num_frames to batch dimension
-# frames = frames.permute(2, 1, 0, 3).reshape(-1, 1, frame_size)
-
-# # -----------------------
-# # 4. Process frames in batches of size 16
-# # -----------------------
-# processed_frames = []
-
-# for i in range(0, len(frames), batch_size):
-#     batch = frames[i:i+batch_size]
-
-#     # If last batch is smaller than batch_size, pad by repeating
-#     if batch.shape[0] < batch_size:
-#         pad_count = batch_size - batch.shape[0]
-#         batch = torch.cat([batch, batch[:pad_count]], dim=0)
-
+# # ------------------------------
+# # 4. Decode helper
+# # ------------------------------
+# def decode_rave(z: torch.Tensor) -> torch.Tensor:
+#     """
+#     Feed latent z to the RAVE decoder safely.
+#     z: [batch, channels, time]
+#     Returns audio tensor [1, CHANNELS, BLOCK_SIZE]
+#     """
+#     z_dec = z.transpose(1, 2)  # swap channels <-> time
 #     with torch.no_grad():
-#         # Get latent
-#         latent = rave.encoder(batch)  # shape [batch_size, latent_channels, latent_frames]
+#         return model.decoder(z_dec)
 
-#         # Optional: manipulate latent here
-#         # Example: scale latent by 0.5
-#         latent = latent * 0.5
+# # ------------------------------
+# # 5. Play audio from latent
+# # ------------------------------
+# def play_latent(z_tensor: torch.Tensor):
+#     audio_out = decode_rave(z_tensor)
+#     audio_np = audio_out[0].cpu().numpy()  # shape [channels, block_size]
+#     # Mix to mono for playback
+#     audio_np = audio_np.mean(axis=0)
+#     # Normalize
+#     audio_np /= np.max(np.abs(audio_np)) + 1e-9
+#     sd.play(audio_np, samplerate=16000)
+#     sd.wait()
 
-#         # Decode back to audio
-#         reconstructed = rave.forward(batch)  # shape [batch_size, 1, frame_size]
-#         processed_frames.append(reconstructed[:batch.shape[0]])  # remove padding if added
+# # ------------------------------
+# # 6. Tkinter GUI for latent sliders
+# # ------------------------------
+# root = tk.Tk()
+# root.title("RAVE Latent Sliders")
 
-# # -----------------------
-# # 5. Combine frames back into waveform
-# # -----------------------
-# processed_audio = torch.cat(processed_frames, dim=-1)
-# processed_audio = processed_audio[:, :, :x.shape[-1]]  # remove extra padding
+# # Dictionary to store slider variables
+# sliders = {}
 
-# print("Processed audio shape:", processed_audio.shape)
+# def update_and_play(*args):
+#     # Clone latent
+#     z_mod = z.clone()
+#     # Apply slider values
+#     for dim, var in sliders.items():
+#         z_mod[0, dim, :] += var.get()
+#     play_latent(z_mod)
+
+# # Create sliders for first 10 latent dimensions
+# for i in range(10):
+#     var = tk.DoubleVar()
+#     var.set(0.0)
+#     slider = tk.Scale(root, from_=-3.0, to=3.0, resolution=0.05,
+#                       orient=tk.HORIZONTAL, length=300,
+#                       label=f"Latent {i}", variable=var, command=update_and_play)
+#     slider.pack()
+#     sliders[i] = var
+
+# # Initial playback
+# update_and_play()
+
+# root.mainloop()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+import torch
+
+import math
+
+model_path = "/Users/sam/Documents/Wesleyan/semester_5/software/COMP333-Synthesizer-Plug-In/RAVE_models/musicnet.ts"
+model = torch.jit.load(model_path)
+model.eval()
+
+# Choose a long power-of-two length so it's divisible by typical factors
+TEST_LEN = 65536  # long enough for most models; adjust upward if you like
+
+# Determine channel count expected by the model:
+# Many RAVE models expect multi-channel (e.g. 16) inputs at encoder input.
+# Try common values; if wrong, set CHANNELS to the one you used to encode before.
+for CHANNELS in (16, 1, 2):
+    try:
+        x = torch.zeros(1, CHANNELS, TEST_LEN)
+        with torch.no_grad():
+            z = model.encoder(x)
+        latent_time = z.shape[-1]
+        down_factor = TEST_LEN / latent_time
+        if abs(round(down_factor) - down_factor) > 1e-6:
+            print(f"[channels={CHANNELS}] Non-integer downsampling factor: {down_factor} (latent_time={latent_time})")
+        else:
+            down_factor = int(round(down_factor))
+            required_input_len = 128 * down_factor
+            print(f"[channels={CHANNELS}] encoder -> latent shape: {z.shape}")
+            print(f"[channels={CHANNELS}] total downsampling factor = {down_factor}")
+            print(f"[channels={CHANNELS}] REQUIRED input length = 128 * {down_factor} = {required_input_len}")
+        break
+    except Exception as e:
+        # encoder failed for this CHANNELS guess — try next
+        print(f"[channels={CHANNELS}] encoder run failed: {e}")
+
+audio = torch.randn(1, 16, 16384)
+
+with torch.no_grad():
+    z = model.encoder(audio)
+
+print(z.shape)   # MUST BE: [1, 256, 128]
+print(z)
+
+z_mod = z.clone()
+z_mod[0, 3, :] += 1.0  # example latent tweak
+
+def decode_rave(z: torch.Tensor) -> torch.Tensor:
+    """
+    Feed latent z to the RAVE decoder safely.
+    z: [batch, channels, time]
+    """
+    z_dec = z.transpose(1, 2)  # swap channels <-> time
+    with torch.no_grad():
+        return model.decoder(z_dec)
+
+audio_out = decode_rave(z_mod)
+
+print(audio_out.shape)
+
+print(audio)
+print(audio_out)

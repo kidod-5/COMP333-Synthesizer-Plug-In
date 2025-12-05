@@ -111,7 +111,7 @@ void MLPlugInAudioProcessor::prepareToPlay(double sampleRate,
                                            int samplesPerBlock) {
     // Use this method as the place to do any pre-playback
     // initialisation that you need..
-    modelManager.loadAsync("/Library/Application Support/dynamicsounds/MLPlugIn/models/vintage.ts");
+    modelManager.loadAsync("/Library/Application Support/dynamicsounds/MLPlugIn/models/musicnet.ts");
     modelManager.resetFIFOs();
 }
 

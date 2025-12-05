@@ -10,7 +10,8 @@
 #include <array>
 #include <cstdint>
 
-constexpr int RAVE_BLOCK_SIZE = 2048;
+constexpr int RAVE_BLOCK_SIZE =
+    16384; // From the test_rave.py script (tried different numbers
 
 struct AudioBlock {
     uint64_t seq = 0;
