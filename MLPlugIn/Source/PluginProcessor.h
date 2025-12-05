@@ -46,7 +46,7 @@ class MLPlugInAudioProcessor : public juce::AudioProcessor {
     juce::AudioProcessorValueTreeState parameters;
     std::atomic<float> *noiseTypeParam =
         nullptr; // 0 = white noise, 1 = pink noise
-    
+//    std::atomic<float> *modelChoiceParam = nullptr;
     std::atomic<float> *wetParam = nullptr;
 
     //==============================================================================
@@ -67,6 +67,10 @@ class MLPlugInAudioProcessor : public juce::AudioProcessor {
     void setCurrentProgram(int index) override;
     const juce::String getProgramName(int index) override;
     void changeProgramName(int index, const juce::String &newName) override;
+    void scanModelDirectory();
+    juce::StringArray getAvailableModels() const { return availableModels; }
+    void loadSelectedModel(const juce::String& name);
+    
 
     //==============================================================================
     void getStateInformation(juce::MemoryBlock &destData) override;
@@ -77,6 +81,8 @@ class MLPlugInAudioProcessor : public juce::AudioProcessor {
     torch::jit::script::Module model;
     std::atomic<bool> isModelLoaded{false};
     RaveModelManager modelManager;
+    juce::StringArray availableModels;
+    juce::String selectedModelName;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(MLPlugInAudioProcessor)
 };

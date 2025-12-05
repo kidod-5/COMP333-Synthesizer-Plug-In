@@ -1,0 +1,2691 @@
+RAVEWrapper(
+  (encoder): RecursiveScriptModule(
+    original_name=Encoder
+    (net): RecursiveScriptModule(
+      original_name=CachedSequential
+      (0): RecursiveScriptModule(
+        original_name=CachedConv1d
+        (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+        (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+      )
+      (1): RecursiveScriptModule(original_name=BatchNorm1d)
+      (2): RecursiveScriptModule(original_name=LeakyReLU)
+      (3): RecursiveScriptModule(
+        original_name=CachedConv1d
+        (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+        (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+      )
+      (4): RecursiveScriptModule(originChild module: encoder
+Child module: decoder
+Attribute: training
+Attribute: _is_full_backward_hook
+Attribute: encoder
+Attribute: encoder.training
+Attribute: encoder._is_full_backward_hook
+Attribute: encoder.cumulative_delay
+Attribute: encoder.net
+Attribute: encoder.net.training
+Attribute: encoder.net._is_full_backward_hook
+Attribute: encoder.net.cumulative_delay
+Attribute: encoder.net.0
+Attribute: encoder.net.0.weight
+Attribute: encoder.net.0.bias
+Attribute: encoder.net.0.training
+Attribute: encoder.net.0._is_full_backward_hook
+Attribute: encoder.net.0.transposed
+Attribute: encoder.net.0._reversed_padding_repeated_twice
+Attribute: encoder.net.0.cumulative_delay
+Attribute: encoder.net.0.cache
+Attribute: encoder.net.0.cache.pad
+Attribute: encoder.net.0.cache.training
+Attribute: encoder.net.0.cache._is_full_backward_hook
+Attribute: decoder
+Attribute: decoder.training
+Attribute: decoder._is_full_backward_hook
+Attribute: decoder.use_noise
+Attribute: decoder.loud_stride
+Attribute: decoder.cumulative_delay
+Attribute: decoder.net
+Attribute: decoder.net.training
+Attribute: decoder.net._is_full_backward_hook
+Attribute: decoder.net.cumulative_delay
+Attribute: decoder.net.0
+Attribute: decoder.net.0.bias
+Attribute: decoder.net.0.weight
+Attribute: decoder.net.0.training
+Attribute: decoder.net.0._is_full_backward_hook
+Attribute: decoder.net.0.transposed
+Attribute: decoder.net.0._reversed_padding_repeated_twice
+Attribute: decoder.net.0.cumulative_delay
+Attribute: decoder.net.0.cache
+Attribute: decoder.net.0.cache.pad
+Attribute: decoder.net.0.cache.training
+Attribute: decoder.net.0.cache._is_full_backward_hook
+Attribute: decoder.net.0.cache.initialized
+Attribute: decoder.net.0.cache.padding
+Attribute: decoder.net.0.cache.crop
+Attribute: decoder.net.0.downsampling_delay
+Attribute: decoder.net.0.downsampling_delay.pad
+Attribute: decoder.net.0.downsampling_delay.training
+Attribute: decoder.net.0.downsampling_delay._is_full_backward_hook
+Attribute: decoder.net.0.downsampling_delay.initialized
+Attribute: decoder.net.0.downsampling_delay.padding
+Attribute: decoder.net.0.downsampling_delay.crop
+Attribute: decoder.net.1
+Attribute: decoder.net.1.training
+Attribute: decoder.net.1._is_full_backward_hook
+Attribute: decoder.net.1.cumulative_delay
+Attribute: decoder.net.1.net
+Attribute: decoder.net.1.net.training
+Attribute: decoder.net.1.net._is_full_backward_hook
+Attribute: decoder.net.1.net.cumulative_delay
+Attribute: decoder.synth
+Attribute: decoder.synth.training
+Attribute: decoder.synth._is_full_backward_hook
+Attribute: decoder.synth.cumulative_delay
+Attribute: decoder.synth.branches
+Attribute: decoder.synth.branches.training
+Attribute: decoder.synth.branches._is_full_backward_hook
+Attribute: decoder.synth.branches.0
+Attribute: decoder.synth.branches.0.bias
+Attribute: decoder.synth.branches.0.weight
+Attribute: decoder.synth.branches.0.training
+Attribute: decoder.synth.branches.0._is_full_backward_hook
+Attribute: decoder.synth.branches.0.transposed
+Attribute: decoder.synth.branches.0._reversed_padding_repeated_twice
+Attribute: decoder.synth.branches.0.cumulative_delay
+Attribute: decoder.synth.branches.0.cache
+Attribute: decoder.synth.branches.0.cache.pad
+Attribute: decoder.synth.branches.0.cache.training
+Attribute: decoder.synth.branches.0.cache._is_full_backward_hook
+Attribute: decoder.synth.branches.0.cache.initialized
+Attribute: decoder.synth.branches.0.cache.padding
+Attribute: decoder.synth.branches.0.cache.crop
+Attribute: decoder.synth.branches.0.downsampling_delay
+Attribute: decoder.synth.branches.0.downsampling_delay.pad
+Attribute: decoder.synth.branches.0.downsampling_delay.training
+Attribute: decoder.synth.branches.0.downsampling_delay._is_full_backward_hook
+Attribute: decoder.synth.branches.0.downsampling_delay.initialized
+Attribute: decoder.synth.branches.0.downsampling_delay.padding
+Attribute: decoder.synth.branches.0.downsampling_delay.crop
+Attribute: decoder.synth.branches.1
+Attribute: decoder.synth.branches.1.bias
+Attribute: decoder.synth.branches.1.weight
+Attribute: decoder.synth.branches.1.training
+Attribute: decoder.synth.branches.1._is_full_backward_hook
+Attribute: decoder.synth.branches.1.transposed
+Attribute: decoder.synth.branches.1._reversed_padding_repeated_twice
+Attribute: decoder.synth.branches.1.cumulative_delay
+Attribute: decoder.synth.branches.1.cache
+Attribute: decoder.synth.branches.1.cache.pad
+Attribute: decoder.synth.branches.1.cache.training
+Attribute: decoder.synth.branches.1.cache._is_full_backward_hook
+Attribute: decoder.synth.branches.1.cache.initialized
+Attribute: decoder.synth.branches.1.cache.padding
+Attribute: decoder.synth.branches.1.cache.crop
+Attribute: decoder.synth.branches.1.downsampling_delay
+Attribute: decoder.synth.branches.1.downsampling_delay.pad
+Attribute: decoder.synth.branches.1.downsampling_delay.training
+Attribute: decoder.synth.branches.1.downsampling_delay._is_full_backward_hook
+Attribute: decoder.synth.branches.1.downsampling_delay.initialized
+Attribute: decoder.synth.branches.1.downsampling_delay.padding
+Attribute: decoder.synth.branches.1.downsampling_delay.crop
+Attribute: decoder.synth.branches.2
+Attribute: decoder.synth.branches.2.target_size
+Attribute: decoder.synth.branches.2.training
+Attribute: decoder.synth.branches.2._is_full_backward_hook
+Attribute: decoder.synth.branches.2.data_size
+Attribute: decoder.synth.branches.2.cumulative_delay
+Attribute: decoder.synth.branches.2.net
+Attribute: decoder.synth.branches.2.net.training
+Attribute: decoder.synth.branches.2.net._is_full_backward_hook
+Attribute: decoder.synth.branches.2.net.cumulative_delay
+Attribute: decoder.synth.branches.2.net.0
+Attribute: decoder.synth.branches.2.net.0.weight
+Attribute: decoder.synth.branches.2.net.0.bias
+Attribute: decoder.synth.branches.2.net.0.training
+Attribute: decoder.synth.branches.2.net.0._is_full_backward_hook
+Attribute: decoder.synth.branches.2.net.0.transposed
+Attribute: decoder.synth.branches.2.net.0._reversed_padding_repeated_twice
+Attribute: decoder.synth.branches.2.net.0.cumulative_delay
+Attribute: decoder.synth.branches.2.net.0.cache
+Attribute: decoder.synth.branches.2.net.0.cache.pad
+Attribute: decoder.synth.branches.2.net.0.cache.training
+Attribute: decoder.synth.branches.2.net.0.cache._is_full_backward_hook
+Attribute: decoder.synth.branches.2.net.0.cache.initialized
+Attribute: decoder.synth.branches.2.net.0.cache.padding
+Attribute: decoder.synth.branches.2.net.0.cache.crop
+Attribute: decoder.synth.branches.2.net.0.downsampling_delay
+Attribute: decoder.synth.branches.2.net.0.downsampling_delay.pad
+Attribute: decoder.synth.branches.2.net.0.downsampling_delay.training
+Attribute: decoder.synth.branches.2.net.0.downsampling_delay._is_full_backward_hook
+Attribute: decoder.synth.branches.2.net.0.downsampling_delay.initialized
+Attribute: decoder.synth.branches.2.net.0.downsampling_delay.padding
+
+
+
+
+
+
+python3 expose_modules.py
+^C^C^CRAVEWrapper(
+  (encoder): RecursiveScriptModule(
+    original_name=Encoder
+    (net): RecursiveScriptModule(
+      original_name=CachedSequential
+      (0): RecursiveScriptModule(
+        original_name=CachedConv1d
+        (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+        (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+      )
+      (1): RecursiveScriptModule(original_name=BatchNorm1d)
+      (2): RecursiveScriptModule(original_name=LeakyReLU)
+      (3): RecursiveScriptModule(
+        original_name=CachedConv1d
+        (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+        (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+      )
+      (4): RecursiveScriptModule(original_name=BatchNorm1d)
+      (5): RecursiveScriptModule(original_name=LeakyReLU)
+      (6): RecursiveScriptModule(
+        original_name=CachedConv1d
+        (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+        (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+      )
+      (7): RecursiveScriptModule(original_name=BatchNorm1d)
+      (8): RecursiveScriptModule(original_name=LeakyReLU)
+      (9): RecursiveScriptModule(
+        original_name=CachedConv1d
+        (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+        (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+      )
+      (10): RecursiveScriptModule(original_name=BatchNorm1d)
+      (11): RecursiveScriptModule(original_name=LeakyReLU)
+      (12): RecursiveScriptModule(
+        original_name=CachedConv1d
+        (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+        (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+      )
+      (13): RecursiveScriptModule(original_name=BatchNorm1d)
+      (14): RecursiveScriptModule(original_name=LeakyReLU)
+      (15): RecursiveScriptModule(
+        original_name=CachedConv1d
+        (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+        (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+      )
+      (16): RecursiveScriptModule(original_name=LeakyReLU)
+      (17): RecursiveScriptModule(
+        original_name=CachedConv1d
+        (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+        (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+      )
+    )
+  )
+  (decoder): RecursiveScriptModule(
+    original_name=Generator
+    (net): RecursiveScriptModule(
+      original_name=CachedSequential
+      (0): RecursiveScriptModule(
+        original_name=CachedConv1d
+        (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+        (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+      )
+      (1): RecursiveScriptModule(
+        original_name=UpsampleLayer
+        (net): RecursiveScriptModule(
+          original_name=CachedSequential
+          (0): RecursiveScriptModule(original_name=LeakyReLU)
+          (1): RecursiveScriptModule(original_name=CachedConvTranspose1d)
+        )
+      )
+      (2): RecursiveScriptModule(
+        original_name=ResidualStack
+        (net): RecursiveScriptModule(
+          original_name=CachedSequential
+          (0): RecursiveScriptModule(
+            original_name=Residual
+            (aligned): RecursiveScriptModule(
+              original_name=AlignBranches
+              (branches): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(
+                  original_name=CachedSequential
+                  (0): RecursiveScriptModule(original_name=LeakyReLU)
+                  (1): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                  (2): RecursiveScriptModule(original_name=LeakyReLU)
+                  (3): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                )
+                (1): RecursiveScriptModule(original_name=Identity)
+              )
+              (paddings): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(original_name=CachedPadding1d)
+                (1): RecursiveScriptModule(original_name=CachedPadding1d)
+              )
+            )
+          )
+          (1): RecursiveScriptModule(
+            original_name=Residual
+            (aligned): RecursiveScriptModule(
+              original_name=AlignBranches
+              (branches): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(
+                  original_name=CachedSequential
+                  (0): RecursiveScriptModule(original_name=LeakyReLU)
+                  (1): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                  (2): RecursiveScriptModule(original_name=LeakyReLU)
+                  (3): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                )
+                (1): RecursiveScriptModule(original_name=Identity)
+              )
+              (paddings): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(original_name=CachedPadding1d)
+                (1): RecursiveScriptModule(original_name=CachedPadding1d)
+              )
+            )
+          )
+          (2): RecursiveScriptModule(
+            original_name=Residual
+            (aligned): RecursiveScriptModule(
+              original_name=AlignBranches
+              (branches): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(
+                  original_name=CachedSequential
+                  (0): RecursiveScriptModule(original_name=LeakyReLU)
+                  (1): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                  (2): RecursiveScriptModule(original_name=LeakyReLU)
+                  (3): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                )
+                (1): RecursiveScriptModule(original_name=Identity)
+              )
+              (paddings): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(original_name=CachedPadding1d)
+                (1): RecursiveScriptModule(original_name=CachedPadding1d)
+              )
+            )
+          )
+        )
+      )
+      (3): RecursiveScriptModule(
+        original_name=UpsampleLayer
+        (net): RecursiveScriptModule(
+          original_name=CachedSequential
+          (0): RecursiveScriptModule(original_name=LeakyReLU)
+          (1): RecursiveScriptModule(original_name=CachedConvTranspose1d)
+        )
+      )
+      (4): RecursiveScriptModule(
+        original_name=ResidualStack
+        (net): RecursiveScriptModule(
+          original_name=CachedSequential
+          (0): RecursiveScriptModule(
+            original_name=Residual
+            (aligned): RecursiveScriptModule(
+              original_name=AlignBranches
+              (branches): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(
+                  original_name=CachedSequential
+                  (0): RecursiveScriptModule(original_name=LeakyReLU)
+                  (1): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                  (2): RecursiveScriptModule(original_name=LeakyReLU)
+                  (3): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                )
+                (1): RecursiveScriptModule(original_name=Identity)
+              )
+              (paddings): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(original_name=CachedPadding1d)
+                (1): RecursiveScriptModule(original_name=CachedPadding1d)
+              )
+            )
+          )
+          (1): RecursiveScriptModule(
+            original_name=Residual
+            (aligned): RecursiveScriptModule(
+              original_name=AlignBranches
+              (branches): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(
+                  original_name=CachedSequential
+                  (0): RecursiveScriptModule(original_name=LeakyReLU)
+                  (1): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                  (2): RecursiveScriptModule(original_name=LeakyReLU)
+                  (3): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                )
+                (1): RecursiveScriptModule(original_name=Identity)
+              )
+              (paddings): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(original_name=CachedPadding1d)
+                (1): RecursiveScriptModule(original_name=CachedPadding1d)
+              )
+            )
+          )
+          (2): RecursiveScriptModule(
+            original_name=Residual
+            (aligned): RecursiveScriptModule(
+              original_name=AlignBranches
+              (branches): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(
+                  original_name=CachedSequential
+                  (0): RecursiveScriptModule(original_name=LeakyReLU)
+                  (1): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                  (2): RecursiveScriptModule(original_name=LeakyReLU)
+                  (3): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                )
+                (1): RecursiveScriptModule(original_name=Identity)
+              )
+              (paddings): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(original_name=CachedPadding1d)
+                (1): RecursiveScriptModule(original_name=CachedPadding1d)
+              )
+            )
+          )
+        )
+      )
+      (5): RecursiveScriptModule(
+        original_name=UpsampleLayer
+        (net): RecursiveScriptModule(
+          original_name=CachedSequential
+          (0): RecursiveScriptModule(original_name=LeakyReLU)
+          (1): RecursiveScriptModule(original_name=CachedConvTranspose1d)
+        )
+      )
+      (6): RecursiveScriptModule(
+        original_name=ResidualStack
+        (net): RecursiveScriptModule(
+          original_name=CachedSequential
+          (0): RecursiveScriptModule(
+            original_name=Residual
+            (aligned): RecursiveScriptModule(
+              original_name=AlignBranches
+              (branches): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(
+                  original_name=CachedSequential
+                  (0): RecursiveScriptModule(original_name=LeakyReLU)
+                  (1): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                  (2): RecursiveScriptModule(original_name=LeakyReLU)
+                  (3): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                )
+                (1): RecursiveScriptModule(original_name=Identity)
+              )
+              (paddings): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(original_name=CachedPadding1d)
+                (1): RecursiveScriptModule(original_name=CachedPadding1d)
+              )
+            )
+          )
+          (1): RecursiveScriptModule(
+            original_name=Residual
+            (aligned): RecursiveScriptModule(
+              original_name=AlignBranches
+              (branches): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(
+                  original_name=CachedSequential
+                  (0): RecursiveScriptModule(original_name=LeakyReLU)
+                  (1): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                  (2): RecursiveScriptModule(original_name=LeakyReLU)
+                  (3): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                )
+                (1): RecursiveScriptModule(original_name=Identity)
+              )
+              (paddings): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(original_name=CachedPadding1d)
+                (1): RecursiveScriptModule(original_name=CachedPadding1d)
+              )
+            )
+          )
+          (2): RecursiveScriptModule(
+            original_name=Residual
+            (aligned): RecursiveScriptModule(
+              original_name=AlignBranches
+              (branches): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(
+                  original_name=CachedSequential
+                  (0): RecursiveScriptModule(original_name=LeakyReLU)
+                  (1): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                  (2): RecursiveScriptModule(original_name=LeakyReLU)
+                  (3): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                )
+                (1): RecursiveScriptModule(original_name=Identity)
+              )
+              (paddings): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(original_name=CachedPadding1d)
+                (1): RecursiveScriptModule(original_name=CachedPadding1d)
+              )
+            )
+          )
+        )
+      )
+      (7): RecursiveScriptModule(
+        original_name=UpsampleLayer
+        (net): RecursiveScriptModule(
+          original_name=CachedSequential
+          (0): RecursiveScriptModule(original_name=LeakyReLU)
+          (1): RecursiveScriptModule(original_name=CachedConvTranspose1d)
+        )
+      )
+      (8): RecursiveScriptModule(
+        original_name=ResidualStack
+        (net): RecursiveScriptModule(
+          original_name=CachedSequential
+          (0): RecursiveScriptModule(
+            original_name=Residual
+            (aligned): RecursiveScriptModule(
+              original_name=AlignBranches
+              (branches): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(
+                  original_name=CachedSequential
+                  (0): RecursiveScriptModule(original_name=LeakyReLU)
+                  (1): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                  (2): RecursiveScriptModule(original_name=LeakyReLU)
+                  (3): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                )
+                (1): RecursiveScriptModule(original_name=Identity)
+              )
+              (paddings): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(original_name=CachedPadding1d)
+                (1): RecursiveScriptModule(original_name=CachedPadding1d)
+              )
+            )
+          )
+          (1): RecursiveScriptModule(
+            original_name=Residual
+            (aligned): RecursiveScriptModule(
+              original_name=AlignBranches
+              (branches): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(
+                  original_name=CachedSequential
+                  (0): RecursiveScriptModule(original_name=LeakyReLU)
+                  (1): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                  (2): RecursiveScriptModule(original_name=LeakyReLU)
+                  (3): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                )
+                (1): RecursiveScriptModule(original_name=Identity)
+              )
+              (paddings): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(original_name=CachedPadding1d)
+                (1): RecursiveScriptModule(original_name=CachedPadding1d)
+              )
+            )
+          )
+          (2): RecursiveScriptModule(
+            original_name=Residual
+            (aligned): RecursiveScriptModule(
+              original_name=AlignBranches
+              (branches): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(
+                  original_name=CachedSequential
+                  (0): RecursiveScriptModule(original_name=LeakyReLU)
+                  (1): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                  (2): RecursiveScriptModule(original_name=LeakyReLU)
+                  (3): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                )
+                (1): RecursiveScriptModule(original_name=Identity)
+              )
+              (paddings): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(original_name=CachedPadding1d)
+                (1): RecursiveScriptModule(original_name=CachedPadding1d)
+              )
+            )
+          )
+        )
+      )
+      (9): RecursiveScriptModule(
+        original_name=UpsampleLayer
+        (net): RecursiveScriptModule(
+          original_name=CachedSequential
+          (0): RecursiveScriptModule(original_name=LeakyReLU)
+          (1): RecursiveScriptModule(original_name=CachedConvTranspose1d)
+        )
+      )
+      (10): RecursiveScriptModule(
+        original_name=ResidualStack
+        (net): RecursiveScriptModule(
+          original_name=CachedSequential
+          (0): RecursiveScriptModule(
+            original_name=Residual
+            (aligned): RecursiveScriptModule(
+              original_name=AlignBranches
+              (branches): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(
+                  original_name=CachedSequential
+                  (0): RecursiveScriptModule(original_name=LeakyReLU)
+                  (1): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                  (2): RecursiveScriptModule(original_name=LeakyReLU)
+                  (3): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                )
+                (1): RecursiveScriptModule(original_name=Identity)
+              )
+              (paddings): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(original_name=CachedPadding1d)
+                (1): RecursiveScriptModule(original_name=CachedPadding1d)
+              )
+            )
+          )
+          (1): RecursiveScriptModule(
+            original_name=Residual
+            (aligned): RecursiveScriptModule(
+              original_name=AlignBranches
+              (branches): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(
+                  original_name=CachedSequential
+                  (0): RecursiveScriptModule(original_name=LeakyReLU)
+                  (1): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                  (2): RecursiveScriptModule(original_name=LeakyReLU)
+                  (3): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                )
+                (1): RecursiveScriptModule(original_name=Identity)
+              )
+              (paddings): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(original_name=CachedPadding1d)
+                (1): RecursiveScriptModule(original_name=CachedPadding1d)
+              )
+            )
+          )
+          (2): RecursiveScriptModule(
+            original_name=Residual
+            (aligned): RecursiveScriptModule(
+              original_name=AlignBranches
+              (branches): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(
+                  original_name=CachedSequential
+                  (0): RecursiveScriptModule(original_name=LeakyReLU)
+                  (1): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                  (2): RecursiveScriptModule(original_name=LeakyReLU)
+                  (3): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                )
+                (1): RecursiveScriptModule(original_name=Identity)
+              )
+              (paddings): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(original_name=CachedPadding1d)
+                (1): RecursiveScriptModule(original_name=CachedPadding1d)
+              )
+            )
+          )
+        )
+      )
+    )
+    (synth): RecursiveScriptModule(
+      original_name=AlignBranches
+      (branches): RecursiveScriptModule(
+        original_name=ModuleList
+        (0): RecursiveScriptModule(
+          original_name=CachedConv1d
+          (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+          (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+        )
+        (1): RecursiveScriptModule(
+          original_name=CachedConv1d
+          (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+          (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+        )
+        (2): RecursiveScriptModule(
+          original_name=NoiseGenerator
+          (net): RecursiveScriptModule(
+            original_name=CachedSequential
+            (0): RecursiveScriptModule(
+              original_name=CachedConv1d
+              (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+              (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+            )
+            (1): RecursiveScriptModule(original_name=LeakyReLU)
+            (2): RecursiveScriptModule(
+              original_name=CachedConv1d
+              (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+              (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+            )
+            (3): RecursiveScriptModule(original_name=LeakyReLU)
+            (4): RecursiveScriptModule(
+              original_name=CachedConv1d
+              (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+              (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+            )
+          )
+        )
+      )
+      (paddings): RecursiveScriptModule(
+        original_name=ModuleList
+        (0): RecursiveScriptModule(original_name=CachedPadding1d)
+        (1): RecursiveScriptModule(original_name=CachedPadding1d)
+        (2): RecursiveScriptModule(original_name=CachedPadding1d)
+      )
+    )
+  )
+)
+RAVEWrapper(
+  (encoder): RecursiveScriptModule(
+    original_name=Encoder
+    (net): RecursiveScriptModule(
+      original_name=CachedSequential
+      (0): RecursiveScriptModule(
+        original_name=CachedConv1d
+        (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+        (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+      )
+      (1): RecursiveScriptModule(original_name=BatchNorm1d)
+      (2): RecursiveScriptModule(original_name=LeakyReLU)
+      (3): RecursiveScriptModule(
+        original_name=CachedConv1d
+        (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+        (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+      )
+      (4): RecursiveScriptModule(original_name=BatchNorm1d)
+      (5): RecursiveScriptModule(original_name=LeakyReLU)
+      (6): RecursiveScriptModule(
+        original_name=CachedConv1d
+        (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+        (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+      )
+      (7): RecursiveScriptModule(original_name=BatchNorm1d)
+      (8): RecursiveScriptModule(original_name=LeakyReLU)
+      (9): RecursiveScriptModule(
+        original_name=CachedConv1d
+        (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+        (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+      )
+      (10): RecursiveScriptModule(original_name=BatchNorm1d)
+      (11): RecursiveScriptModule(original_name=LeakyReLU)
+      (12): RecursiveScriptModule(
+        original_name=CachedConv1d
+        (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+        (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+      )
+      (13): RecursiveScriptModule(original_name=BatchNorm1d)
+      (14): RecursiveScriptModule(original_name=LeakyReLU)
+      (15): RecursiveScriptModule(
+        original_name=CachedConv1d
+        (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+        (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+      )
+      (16): RecursiveScriptModule(original_name=LeakyReLU)
+      (17): RecursiveScriptModule(
+        original_name=CachedConv1d
+        (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+        (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+      )
+    )
+  )
+  (decoder): RecursiveScriptModule(
+    original_name=Generator
+    (net): RecursiveScriptModule(
+      original_name=CachedSequential
+      (0): RecursiveScriptModule(
+        original_name=CachedConv1d
+        (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+        (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+      )
+      (1): RecursiveScriptModule(
+        original_name=UpsampleLayer
+        (net): RecursiveScriptModule(
+          original_name=CachedSequential
+          (0): RecursiveScriptModule(original_name=LeakyReLU)
+          (1): RecursiveScriptModule(original_name=CachedConvTranspose1d)
+        )
+      )
+      (2): RecursiveScriptModule(
+        original_name=ResidualStack
+        (net): RecursiveScriptModule(
+          original_name=CachedSequential
+          (0): RecursiveScriptModule(
+            original_name=Residual
+            (aligned): RecursiveScriptModule(
+              original_name=AlignBranches
+              (branches): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(
+                  original_name=CachedSequential
+                  (0): RecursiveScriptModule(original_name=LeakyReLU)
+                  (1): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                  (2): RecursiveScriptModule(original_name=LeakyReLU)
+                  (3): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                )
+                (1): RecursiveScriptModule(original_name=Identity)
+              )
+              (paddings): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(original_name=CachedPadding1d)
+                (1): RecursiveScriptModule(original_name=CachedPadding1d)
+              )
+            )
+          )
+          (1): RecursiveScriptModule(
+            original_name=Residual
+            (aligned): RecursiveScriptModule(
+              original_name=AlignBranches
+              (branches): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(
+                  original_name=CachedSequential
+                  (0): RecursiveScriptModule(original_name=LeakyReLU)
+                  (1): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                  (2): RecursiveScriptModule(original_name=LeakyReLU)
+                  (3): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                )
+                (1): RecursiveScriptModule(original_name=Identity)
+              )
+              (paddings): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(original_name=CachedPadding1d)
+                (1): RecursiveScriptModule(original_name=CachedPadding1d)
+              )
+            )
+          )
+          (2): RecursiveScriptModule(
+            original_name=Residual
+            (aligned): RecursiveScriptModule(
+              original_name=AlignBranches
+              (branches): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(
+                  original_name=CachedSequential
+                  (0): RecursiveScriptModule(original_name=LeakyReLU)
+                  (1): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                  (2): RecursiveScriptModule(original_name=LeakyReLU)
+                  (3): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                )
+                (1): RecursiveScriptModule(original_name=Identity)
+              )
+              (paddings): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(original_name=CachedPadding1d)
+                (1): RecursiveScriptModule(original_name=CachedPadding1d)
+              )
+            )
+          )
+        )
+      )
+      (3): RecursiveScriptModule(
+        original_name=UpsampleLayer
+        (net): RecursiveScriptModule(
+          original_name=CachedSequential
+          (0): RecursiveScriptModule(original_name=LeakyReLU)
+          (1): RecursiveScriptModule(original_name=CachedConvTranspose1d)
+        )
+      )
+      (4): RecursiveScriptModule(
+        original_name=ResidualStack
+        (net): RecursiveScriptModule(
+          original_name=CachedSequential
+          (0): RecursiveScriptModule(
+            original_name=Residual
+            (aligned): RecursiveScriptModule(
+              original_name=AlignBranches
+              (branches): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(
+                  original_name=CachedSequential
+                  (0): RecursiveScriptModule(original_name=LeakyReLU)
+                  (1): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                  (2): RecursiveScriptModule(original_name=LeakyReLU)
+                  (3): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                )
+                (1): RecursiveScriptModule(original_name=Identity)
+              )
+              (paddings): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(original_name=CachedPadding1d)
+                (1): RecursiveScriptModule(original_name=CachedPadding1d)
+              )
+            )
+          )
+          (1): RecursiveScriptModule(
+            original_name=Residual
+            (aligned): RecursiveScriptModule(
+              original_name=AlignBranches
+              (branches): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(
+                  original_name=CachedSequential
+                  (0): RecursiveScriptModule(original_name=LeakyReLU)
+                  (1): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                  (2): RecursiveScriptModule(original_name=LeakyReLU)
+                  (3): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                )
+                (1): RecursiveScriptModule(original_name=Identity)
+              )
+              (paddings): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(original_name=CachedPadding1d)
+                (1): RecursiveScriptModule(original_name=CachedPadding1d)
+              )
+            )
+          )
+          (2): RecursiveScriptModule(
+            original_name=Residual
+            (aligned): RecursiveScriptModule(
+              original_name=AlignBranches
+              (branches): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(
+                  original_name=CachedSequential
+                  (0): RecursiveScriptModule(original_name=LeakyReLU)
+                  (1): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                  (2): RecursiveScriptModule(original_name=LeakyReLU)
+                  (3): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                )
+                (1): RecursiveScriptModule(original_name=Identity)
+              )
+              (paddings): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(original_name=CachedPadding1d)
+                (1): RecursiveScriptModule(original_name=CachedPadding1d)
+              )
+            )
+          )
+        )
+      )
+      (5): RecursiveScriptModule(
+        original_name=UpsampleLayer
+        (net): RecursiveScriptModule(
+          original_name=CachedSequential
+          (0): RecursiveScriptModule(original_name=LeakyReLU)
+          (1): RecursiveScriptModule(original_name=CachedConvTranspose1d)
+        )
+      )
+      (6): RecursiveScriptModule(
+        original_name=ResidualStack
+        (net): RecursiveScriptModule(
+          original_name=CachedSequential
+          (0): RecursiveScriptModule(
+            original_name=Residual
+            (aligned): RecursiveScriptModule(
+              original_name=AlignBranches
+              (branches): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(
+                  original_name=CachedSequential
+                  (0): RecursiveScriptModule(original_name=LeakyReLU)
+                  (1): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                  (2): RecursiveScriptModule(original_name=LeakyReLU)
+                  (3): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                )
+                (1): RecursiveScriptModule(original_name=Identity)
+              )
+              (paddings): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(original_name=CachedPadding1d)
+                (1): RecursiveScriptModule(original_name=CachedPadding1d)
+              )
+            )
+          )
+          (1): RecursiveScriptModule(
+            original_name=Residual
+            (aligned): RecursiveScriptModule(
+              original_name=AlignBranches
+              (branches): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(
+                  original_name=CachedSequential
+                  (0): RecursiveScriptModule(original_name=LeakyReLU)
+                  (1): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                  (2): RecursiveScriptModule(original_name=LeakyReLU)
+                  (3): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                )
+                (1): RecursiveScriptModule(original_name=Identity)
+              )
+              (paddings): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(original_name=CachedPadding1d)
+                (1): RecursiveScriptModule(original_name=CachedPadding1d)
+              )
+            )
+          )
+          (2): RecursiveScriptModule(
+            original_name=Residual
+            (aligned): RecursiveScriptModule(
+              original_name=AlignBranches
+              (branches): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(
+                  original_name=CachedSequential
+                  (0): RecursiveScriptModule(original_name=LeakyReLU)
+                  (1): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                  (2): RecursiveScriptModule(original_name=LeakyReLU)
+                  (3): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                )
+                (1): RecursiveScriptModule(original_name=Identity)
+              )
+              (paddings): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(original_name=CachedPadding1d)
+                (1): RecursiveScriptModule(original_name=CachedPadding1d)
+              )
+            )
+          )
+        )
+      )
+      (7): RecursiveScriptModule(
+        original_name=UpsampleLayer
+        (net): RecursiveScriptModule(
+          original_name=CachedSequential
+          (0): RecursiveScriptModule(original_name=LeakyReLU)
+          (1): RecursiveScriptModule(original_name=CachedConvTranspose1d)
+        )
+      )
+      (8): RecursiveScriptModule(
+        original_name=ResidualStack
+        (net): RecursiveScriptModule(
+          original_name=CachedSequential
+          (0): RecursiveScriptModule(
+            original_name=Residual
+            (aligned): RecursiveScriptModule(
+              original_name=AlignBranches
+              (branches): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(
+                  original_name=CachedSequential
+                  (0): RecursiveScriptModule(original_name=LeakyReLU)
+                  (1): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                  (2): RecursiveScriptModule(original_name=LeakyReLU)
+                  (3): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                )
+                (1): RecursiveScriptModule(original_name=Identity)
+              )
+              (paddings): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(original_name=CachedPadding1d)
+                (1): RecursiveScriptModule(original_name=CachedPadding1d)
+              )
+            )
+          )
+          (1): RecursiveScriptModule(
+            original_name=Residual
+            (aligned): RecursiveScriptModule(
+              original_name=AlignBranches
+              (branches): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(
+                  original_name=CachedSequential
+                  (0): RecursiveScriptModule(original_name=LeakyReLU)
+                  (1): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                  (2): RecursiveScriptModule(original_name=LeakyReLU)
+                  (3): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                )
+                (1): RecursiveScriptModule(original_name=Identity)
+              )
+              (paddings): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(original_name=CachedPadding1d)
+                (1): RecursiveScriptModule(original_name=CachedPadding1d)
+              )
+            )
+          )
+          (2): RecursiveScriptModule(
+            original_name=Residual
+            (aligned): RecursiveScriptModule(
+              original_name=AlignBranches
+              (branches): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(
+                  original_name=CachedSequential
+                  (0): RecursiveScriptModule(original_name=LeakyReLU)
+                  (1): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                  (2): RecursiveScriptModule(original_name=LeakyReLU)
+                  (3): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                )
+                (1): RecursiveScriptModule(original_name=Identity)
+              )
+              (paddings): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(original_name=CachedPadding1d)
+                (1): RecursiveScriptModule(original_name=CachedPadding1d)
+              )
+            )
+          )
+        )
+      )
+      (9): RecursiveScriptModule(
+        original_name=UpsampleLayer
+        (net): RecursiveScriptModule(
+          original_name=CachedSequential
+          (0): RecursiveScriptModule(original_name=LeakyReLU)
+          (1): RecursiveScriptModule(original_name=CachedConvTranspose1d)
+        )
+      )
+      (10): RecursiveScriptModule(
+        original_name=ResidualStack
+        (net): RecursiveScriptModule(
+          original_name=CachedSequential
+          (0): RecursiveScriptModule(
+            original_name=Residual
+            (aligned): RecursiveScriptModule(
+              original_name=AlignBranches
+              (branches): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(
+                  original_name=CachedSequential
+                  (0): RecursiveScriptModule(original_name=LeakyReLU)
+                  (1): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                  (2): RecursiveScriptModule(original_name=LeakyReLU)
+                  (3): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                )
+                (1): RecursiveScriptModule(original_name=Identity)
+              )
+              (paddings): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(original_name=CachedPadding1d)
+                (1): RecursiveScriptModule(original_name=CachedPadding1d)
+              )
+            )
+          )
+          (1): RecursiveScriptModule(
+            original_name=Residual
+            (aligned): RecursiveScriptModule(
+              original_name=AlignBranches
+              (branches): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(
+                  original_name=CachedSequential
+                  (0): RecursiveScriptModule(original_name=LeakyReLU)
+                  (1): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                  (2): RecursiveScriptModule(original_name=LeakyReLU)
+                  (3): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                )
+                (1): RecursiveScriptModule(original_name=Identity)
+              )
+              (paddings): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(original_name=CachedPadding1d)
+                (1): RecursiveScriptModule(original_name=CachedPadding1d)
+              )
+            )
+          )
+          (2): RecursiveScriptModule(
+            original_name=Residual
+            (aligned): RecursiveScriptModule(
+              original_name=AlignBranches
+              (branches): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(
+                  original_name=CachedSequential
+                  (0): RecursiveScriptModule(original_name=LeakyReLU)
+                  (1): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                  (2): RecursiveScriptModule(original_name=LeakyReLU)
+                  (3): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                )
+                (1): RecursiveScriptModule(original_name=Identity)
+              )
+              (paddings): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(original_name=CachedPadding1d)
+                (1): RecursiveScriptModule(original_name=CachedPadding1d)
+              )
+            )
+          )
+        )
+      )
+    )
+    (synth): RecursiveScriptModule(
+      original_name=AlignBranches
+      (branches): RecursiveScriptModule(
+        original_name=ModuleList
+        (0): RecursiveScriptModule(
+          original_name=CachedConv1d
+          (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+          (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+        )
+        (1): RecursiveScriptModule(
+          original_name=CachedConv1d
+          (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+          (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+        )
+        (2): RecursiveScriptModule(
+          original_name=NoiseGenerator
+          (net): RecursiveScriptModule(
+            original_name=CachedSequential
+            (0): RecursiveScriptModule(
+              original_name=CachedConv1d
+              (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+              (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+            )
+            (1): RecursiveScriptModule(original_name=LeakyReLU)
+            (2): RecursiveScriptModule(
+              original_name=CachedConv1d
+              (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+              (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+            )
+            (3): RecursiveScriptModule(original_name=LeakyReLU)
+            (4): RecursiveScriptModule(
+              original_name=CachedConv1d
+              (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+              (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+            )
+          )
+        )
+      )
+      (paddings): RecursiveScriptModule(
+        original_name=ModuleList
+        (0): RecursiveScriptModule(original_name=CachedPadding1d)
+        (1): RecursiveScriptModule(original_name=CachedPadding1d)
+        (2): RecursiveScriptModule(original_name=CachedPadding1d)
+      )
+    )
+  )
+)
+<bound method RAVEWrapper.encode of RAVEWrapper(
+  (encoder): RecursiveScriptModule(
+    original_name=Encoder
+    (net): RecursiveScriptModule(
+      original_name=CachedSequential
+      (0): RecursiveScriptModule(
+        original_name=CachedConv1d
+        (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+        (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+      )
+      (1): RecursiveScriptModule(original_name=BatchNorm1d)
+      (2): RecursiveScriptModule(original_name=LeakyReLU)
+      (3): RecursiveScriptModule(
+        original_name=CachedConv1d
+        (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+        (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+      )
+      (4): RecursiveScriptModule(original_name=BatchNorm1d)
+      (5): RecursiveScriptModule(original_name=LeakyReLU)
+      (6): RecursiveScriptModule(
+        original_name=CachedConv1d
+        (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+        (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+      )
+      (7): RecursiveScriptModule(original_name=BatchNorm1d)
+      (8): RecursiveScriptModule(original_name=LeakyReLU)
+      (9): RecursiveScriptModule(
+        original_name=CachedConv1d
+        (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+        (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+      )
+      (10): RecursiveScriptModule(original_name=BatchNorm1d)
+      (11): RecursiveScriptModule(original_name=LeakyReLU)
+      (12): RecursiveScriptModule(
+        original_name=CachedConv1d
+        (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+        (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+      )
+      (13): RecursiveScriptModule(original_name=BatchNorm1d)
+      (14): RecursiveScriptModule(original_name=LeakyReLU)
+      (15): RecursiveScriptModule(
+        original_name=CachedConv1d
+        (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+        (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+      )
+      (16): RecursiveScriptModule(original_name=LeakyReLU)
+      (17): RecursiveScriptModule(
+        original_name=CachedConv1d
+        (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+        (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+      )
+    )
+  )
+  (decoder): RecursiveScriptModule(
+    original_name=Generator
+    (net): RecursiveScriptModule(
+      original_name=CachedSequential
+      (0): RecursiveScriptModule(
+        original_name=CachedConv1d
+        (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+        (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+      )
+      (1): RecursiveScriptModule(
+        original_name=UpsampleLayer
+        (net): RecursiveScriptModule(
+          original_name=CachedSequential
+          (0): RecursiveScriptModule(original_name=LeakyReLU)
+          (1): RecursiveScriptModule(original_name=CachedConvTranspose1d)
+        )
+      )
+      (2): RecursiveScriptModule(
+        original_name=ResidualStack
+        (net): RecursiveScriptModule(
+          original_name=CachedSequential
+          (0): RecursiveScriptModule(
+            original_name=Residual
+            (aligned): RecursiveScriptModule(
+              original_name=AlignBranches
+              (branches): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(
+                  original_name=CachedSequential
+                  (0): RecursiveScriptModule(original_name=LeakyReLU)
+                  (1): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                  (2): RecursiveScriptModule(original_name=LeakyReLU)
+                  (3): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                )
+                (1): RecursiveScriptModule(original_name=Identity)
+              )
+              (paddings): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(original_name=CachedPadding1d)
+                (1): RecursiveScriptModule(original_name=CachedPadding1d)
+              )
+            )
+          )
+          (1): RecursiveScriptModule(
+            original_name=Residual
+            (aligned): RecursiveScriptModule(
+              original_name=AlignBranches
+              (branches): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(
+                  original_name=CachedSequential
+                  (0): RecursiveScriptModule(original_name=LeakyReLU)
+                  (1): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                  (2): RecursiveScriptModule(original_name=LeakyReLU)
+                  (3): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                )
+                (1): RecursiveScriptModule(original_name=Identity)
+              )
+              (paddings): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(original_name=CachedPadding1d)
+                (1): RecursiveScriptModule(original_name=CachedPadding1d)
+              )
+            )
+          )
+          (2): RecursiveScriptModule(
+            original_name=Residual
+            (aligned): RecursiveScriptModule(
+              original_name=AlignBranches
+              (branches): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(
+                  original_name=CachedSequential
+                  (0): RecursiveScriptModule(original_name=LeakyReLU)
+                  (1): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                  (2): RecursiveScriptModule(original_name=LeakyReLU)
+                  (3): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                )
+                (1): RecursiveScriptModule(original_name=Identity)
+              )
+              (paddings): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(original_name=CachedPadding1d)
+                (1): RecursiveScriptModule(original_name=CachedPadding1d)
+              )
+            )
+          )
+        )
+      )
+      (3): RecursiveScriptModule(
+        original_name=UpsampleLayer
+        (net): RecursiveScriptModule(
+          original_name=CachedSequential
+          (0): RecursiveScriptModule(original_name=LeakyReLU)
+          (1): RecursiveScriptModule(original_name=CachedConvTranspose1d)
+        )
+      )
+      (4): RecursiveScriptModule(
+        original_name=ResidualStack
+        (net): RecursiveScriptModule(
+          original_name=CachedSequential
+          (0): RecursiveScriptModule(
+            original_name=Residual
+            (aligned): RecursiveScriptModule(
+              original_name=AlignBranches
+              (branches): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(
+                  original_name=CachedSequential
+                  (0): RecursiveScriptModule(original_name=LeakyReLU)
+                  (1): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                  (2): RecursiveScriptModule(original_name=LeakyReLU)
+                  (3): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                )
+                (1): RecursiveScriptModule(original_name=Identity)
+              )
+              (paddings): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(original_name=CachedPadding1d)
+                (1): RecursiveScriptModule(original_name=CachedPadding1d)
+              )
+            )
+          )
+          (1): RecursiveScriptModule(
+            original_name=Residual
+            (aligned): RecursiveScriptModule(
+              original_name=AlignBranches
+              (branches): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(
+                  original_name=CachedSequential
+                  (0): RecursiveScriptModule(original_name=LeakyReLU)
+                  (1): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                  (2): RecursiveScriptModule(original_name=LeakyReLU)
+                  (3): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                )
+                (1): RecursiveScriptModule(original_name=Identity)
+              )
+              (paddings): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(original_name=CachedPadding1d)
+                (1): RecursiveScriptModule(original_name=CachedPadding1d)
+              )
+            )
+          )
+          (2): RecursiveScriptModule(
+            original_name=Residual
+            (aligned): RecursiveScriptModule(
+              original_name=AlignBranches
+              (branches): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(
+                  original_name=CachedSequential
+                  (0): RecursiveScriptModule(original_name=LeakyReLU)
+                  (1): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                  (2): RecursiveScriptModule(original_name=LeakyReLU)
+                  (3): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                )
+                (1): RecursiveScriptModule(original_name=Identity)
+              )
+              (paddings): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(original_name=CachedPadding1d)
+                (1): RecursiveScriptModule(original_name=CachedPadding1d)
+              )
+            )
+          )
+        )
+      )
+      (5): RecursiveScriptModule(
+        original_name=UpsampleLayer
+        (net): RecursiveScriptModule(
+          original_name=CachedSequential
+          (0): RecursiveScriptModule(original_name=LeakyReLU)
+          (1): RecursiveScriptModule(original_name=CachedConvTranspose1d)
+        )
+      )
+      (6): RecursiveScriptModule(
+        original_name=ResidualStack
+        (net): RecursiveScriptModule(
+          original_name=CachedSequential
+          (0): RecursiveScriptModule(
+            original_name=Residual
+            (aligned): RecursiveScriptModule(
+              original_name=AlignBranches
+              (branches): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(
+                  original_name=CachedSequential
+                  (0): RecursiveScriptModule(original_name=LeakyReLU)
+                  (1): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                  (2): RecursiveScriptModule(original_name=LeakyReLU)
+                  (3): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                )
+                (1): RecursiveScriptModule(original_name=Identity)
+              )
+              (paddings): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(original_name=CachedPadding1d)
+                (1): RecursiveScriptModule(original_name=CachedPadding1d)
+              )
+            )
+          )
+          (1): RecursiveScriptModule(
+            original_name=Residual
+            (aligned): RecursiveScriptModule(
+              original_name=AlignBranches
+              (branches): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(
+                  original_name=CachedSequential
+                  (0): RecursiveScriptModule(original_name=LeakyReLU)
+                  (1): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                  (2): RecursiveScriptModule(original_name=LeakyReLU)
+                  (3): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                )
+                (1): RecursiveScriptModule(original_name=Identity)
+              )
+              (paddings): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(original_name=CachedPadding1d)
+                (1): RecursiveScriptModule(original_name=CachedPadding1d)
+              )
+            )
+          )
+          (2): RecursiveScriptModule(
+            original_name=Residual
+            (aligned): RecursiveScriptModule(
+              original_name=AlignBranches
+              (branches): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(
+                  original_name=CachedSequential
+                  (0): RecursiveScriptModule(original_name=LeakyReLU)
+                  (1): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                  (2): RecursiveScriptModule(original_name=LeakyReLU)
+                  (3): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                )
+                (1): RecursiveScriptModule(original_name=Identity)
+              )
+              (paddings): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(original_name=CachedPadding1d)
+                (1): RecursiveScriptModule(original_name=CachedPadding1d)
+              )
+            )
+          )
+        )
+      )
+      (7): RecursiveScriptModule(
+        original_name=UpsampleLayer
+        (net): RecursiveScriptModule(
+          original_name=CachedSequential
+          (0): RecursiveScriptModule(original_name=LeakyReLU)
+          (1): RecursiveScriptModule(original_name=CachedConvTranspose1d)
+        )
+      )
+      (8): RecursiveScriptModule(
+        original_name=ResidualStack
+        (net): RecursiveScriptModule(
+          original_name=CachedSequential
+          (0): RecursiveScriptModule(
+            original_name=Residual
+            (aligned): RecursiveScriptModule(
+              original_name=AlignBranches
+              (branches): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(
+                  original_name=CachedSequential
+                  (0): RecursiveScriptModule(original_name=LeakyReLU)
+                  (1): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                  (2): RecursiveScriptModule(original_name=LeakyReLU)
+                  (3): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                )
+                (1): RecursiveScriptModule(original_name=Identity)
+              )
+              (paddings): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(original_name=CachedPadding1d)
+                (1): RecursiveScriptModule(original_name=CachedPadding1d)
+              )
+            )
+          )
+          (1): RecursiveScriptModule(
+            original_name=Residual
+            (aligned): RecursiveScriptModule(
+              original_name=AlignBranches
+              (branches): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(
+                  original_name=CachedSequential
+                  (0): RecursiveScriptModule(original_name=LeakyReLU)
+                  (1): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                  (2): RecursiveScriptModule(original_name=LeakyReLU)
+                  (3): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                )
+                (1): RecursiveScriptModule(original_name=Identity)
+              )
+              (paddings): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(original_name=CachedPadding1d)
+                (1): RecursiveScriptModule(original_name=CachedPadding1d)
+              )
+            )
+          )
+          (2): RecursiveScriptModule(
+            original_name=Residual
+            (aligned): RecursiveScriptModule(
+              original_name=AlignBranches
+              (branches): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(
+                  original_name=CachedSequential
+                  (0): RecursiveScriptModule(original_name=LeakyReLU)
+                  (1): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                  (2): RecursiveScriptModule(original_name=LeakyReLU)
+                  (3): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                )
+                (1): RecursiveScriptModule(original_name=Identity)
+              )
+              (paddings): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(original_name=CachedPadding1d)
+                (1): RecursiveScriptModule(original_name=CachedPadding1d)
+              )
+            )
+          )
+        )
+      )
+      (9): RecursiveScriptModule(
+        original_name=UpsampleLayer
+        (net): RecursiveScriptModule(
+          original_name=CachedSequential
+          (0): RecursiveScriptModule(original_name=LeakyReLU)
+          (1): RecursiveScriptModule(original_name=CachedConvTranspose1d)
+        )
+      )
+      (10): RecursiveScriptModule(
+        original_name=ResidualStack
+        (net): RecursiveScriptModule(
+          original_name=CachedSequential
+          (0): RecursiveScriptModule(
+            original_name=Residual
+            (aligned): RecursiveScriptModule(
+              original_name=AlignBranches
+              (branches): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(
+                  original_name=CachedSequential
+                  (0): RecursiveScriptModule(original_name=LeakyReLU)
+                  (1): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                  (2): RecursiveScriptModule(original_name=LeakyReLU)
+                  (3): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                )
+                (1): RecursiveScriptModule(original_name=Identity)
+              )
+              (paddings): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(original_name=CachedPadding1d)
+                (1): RecursiveScriptModule(original_name=CachedPadding1d)
+              )
+            )
+          )
+          (1): RecursiveScriptModule(
+            original_name=Residual
+            (aligned): RecursiveScriptModule(
+              original_name=AlignBranches
+              (branches): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(
+                  original_name=CachedSequential
+                  (0): RecursiveScriptModule(original_name=LeakyReLU)
+                  (1): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                  (2): RecursiveScriptModule(original_name=LeakyReLU)
+                  (3): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                )
+                (1): RecursiveScriptModule(original_name=Identity)
+              )
+              (paddings): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(original_name=CachedPadding1d)
+                (1): RecursiveScriptModule(original_name=CachedPadding1d)
+              )
+            )
+          )
+          (2): RecursiveScriptModule(
+            original_name=Residual
+            (aligned): RecursiveScriptModule(
+              original_name=AlignBranches
+              (branches): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(
+                  original_name=CachedSequential
+                  (0): RecursiveScriptModule(original_name=LeakyReLU)
+                  (1): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                  (2): RecursiveScriptModule(original_name=LeakyReLU)
+                  (3): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                )
+                (1): RecursiveScriptModule(original_name=Identity)
+              )
+              (paddings): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(original_name=CachedPadding1d)
+                (1): RecursiveScriptModule(original_name=CachedPadding1d)
+              )
+            )
+          )
+        )
+      )
+    )
+    (synth): RecursiveScriptModule(
+      original_name=AlignBranches
+      (branches): RecursiveScriptModule(
+        original_name=ModuleList
+        (0): RecursiveScriptModule(
+          original_name=CachedConv1d
+          (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+          (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+        )
+        (1): RecursiveScriptModule(
+          original_name=CachedConv1d
+          (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+          (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+        )
+        (2): RecursiveScriptModule(
+          original_name=NoiseGenerator
+          (net): RecursiveScriptModule(
+            original_name=CachedSequential
+            (0): RecursiveScriptModule(
+              original_name=CachedConv1d
+              (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+              (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+            )
+            (1): RecursiveScriptModule(original_name=LeakyReLU)
+            (2): RecursiveScriptModule(
+              original_name=CachedConv1d
+              (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+              (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+            )
+            (3): RecursiveScriptModule(original_name=LeakyReLU)
+            (4): RecursiveScriptModule(
+              original_name=CachedConv1d
+              (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+              (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+            )
+          )
+        )
+      )
+      (paddings): RecursiveScriptModule(
+        original_name=ModuleList
+        (0): RecursiveScriptModule(original_name=CachedPadding1d)
+        (1): RecursiveScriptModule(original_name=CachedPadding1d)
+        (2): RecursiveScriptModule(original_name=CachedPadding1d)
+      )
+    )
+  )
+)>
+<bound method RAVEWrapper.decode of RAVEWrapper(
+  (encoder): RecursiveScriptModule(
+    original_name=Encoder
+    (net): RecursiveScriptModule(
+      original_name=CachedSequential
+      (0): RecursiveScriptModule(
+        original_name=CachedConv1d
+        (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+        (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+      )
+      (1): RecursiveScriptModule(original_name=BatchNorm1d)
+      (2): RecursiveScriptModule(original_name=LeakyReLU)
+      (3): RecursiveScriptModule(
+        original_name=CachedConv1d
+        (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+        (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+      )
+      (4): RecursiveScriptModule(original_name=BatchNorm1d)
+      (5): RecursiveScriptModule(original_name=LeakyReLU)
+      (6): RecursiveScriptModule(
+        original_name=CachedConv1d
+        (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+        (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+      )
+      (7): RecursiveScriptModule(original_name=BatchNorm1d)
+      (8): RecursiveScriptModule(original_name=LeakyReLU)
+      (9): RecursiveScriptModule(
+        original_name=CachedConv1d
+        (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+        (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+      )
+      (10): RecursiveScriptModule(original_name=BatchNorm1d)
+      (11): RecursiveScriptModule(original_name=LeakyReLU)
+      (12): RecursiveScriptModule(
+        original_name=CachedConv1d
+        (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+        (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+      )
+      (13): RecursiveScriptModule(original_name=BatchNorm1d)
+      (14): RecursiveScriptModule(original_name=LeakyReLU)
+      (15): RecursiveScriptModule(
+        original_name=CachedConv1d
+        (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+        (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+      )
+      (16): RecursiveScriptModule(original_name=LeakyReLU)
+      (17): RecursiveScriptModule(
+        original_name=CachedConv1d
+        (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+        (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+      )
+    )
+  )
+  (decoder): RecursiveScriptModule(
+    original_name=Generator
+    (net): RecursiveScriptModule(
+      original_name=CachedSequential
+      (0): RecursiveScriptModule(
+        original_name=CachedConv1d
+        (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+        (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+      )
+      (1): RecursiveScriptModule(
+        original_name=UpsampleLayer
+        (net): RecursiveScriptModule(
+          original_name=CachedSequential
+          (0): RecursiveScriptModule(original_name=LeakyReLU)
+          (1): RecursiveScriptModule(original_name=CachedConvTranspose1d)
+        )
+      )
+      (2): RecursiveScriptModule(
+        original_name=ResidualStack
+        (net): RecursiveScriptModule(
+          original_name=CachedSequential
+          (0): RecursiveScriptModule(
+            original_name=Residual
+            (aligned): RecursiveScriptModule(
+              original_name=AlignBranches
+              (branches): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(
+                  original_name=CachedSequential
+                  (0): RecursiveScriptModule(original_name=LeakyReLU)
+                  (1): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                  (2): RecursiveScriptModule(original_name=LeakyReLU)
+                  (3): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                )
+                (1): RecursiveScriptModule(original_name=Identity)
+              )
+              (paddings): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(original_name=CachedPadding1d)
+                (1): RecursiveScriptModule(original_name=CachedPadding1d)
+              )
+            )
+          )
+          (1): RecursiveScriptModule(
+            original_name=Residual
+            (aligned): RecursiveScriptModule(
+              original_name=AlignBranches
+              (branches): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(
+                  original_name=CachedSequential
+                  (0): RecursiveScriptModule(original_name=LeakyReLU)
+                  (1): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                  (2): RecursiveScriptModule(original_name=LeakyReLU)
+                  (3): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                )
+                (1): RecursiveScriptModule(original_name=Identity)
+              )
+              (paddings): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(original_name=CachedPadding1d)
+                (1): RecursiveScriptModule(original_name=CachedPadding1d)
+              )
+            )
+          )
+          (2): RecursiveScriptModule(
+            original_name=Residual
+            (aligned): RecursiveScriptModule(
+              original_name=AlignBranches
+              (branches): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(
+                  original_name=CachedSequential
+                  (0): RecursiveScriptModule(original_name=LeakyReLU)
+                  (1): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                  (2): RecursiveScriptModule(original_name=LeakyReLU)
+                  (3): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                )
+                (1): RecursiveScriptModule(original_name=Identity)
+              )
+              (paddings): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(original_name=CachedPadding1d)
+                (1): RecursiveScriptModule(original_name=CachedPadding1d)
+              )
+            )
+          )
+        )
+      )
+      (3): RecursiveScriptModule(
+        original_name=UpsampleLayer
+        (net): RecursiveScriptModule(
+          original_name=CachedSequential
+          (0): RecursiveScriptModule(original_name=LeakyReLU)
+          (1): RecursiveScriptModule(original_name=CachedConvTranspose1d)
+        )
+      )
+      (4): RecursiveScriptModule(
+        original_name=ResidualStack
+        (net): RecursiveScriptModule(
+          original_name=CachedSequential
+          (0): RecursiveScriptModule(
+            original_name=Residual
+            (aligned): RecursiveScriptModule(
+              original_name=AlignBranches
+              (branches): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(
+                  original_name=CachedSequential
+                  (0): RecursiveScriptModule(original_name=LeakyReLU)
+                  (1): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                  (2): RecursiveScriptModule(original_name=LeakyReLU)
+                  (3): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                )
+                (1): RecursiveScriptModule(original_name=Identity)
+              )
+              (paddings): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(original_name=CachedPadding1d)
+                (1): RecursiveScriptModule(original_name=CachedPadding1d)
+              )
+            )
+          )
+          (1): RecursiveScriptModule(
+            original_name=Residual
+            (aligned): RecursiveScriptModule(
+              original_name=AlignBranches
+              (branches): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(
+                  original_name=CachedSequential
+                  (0): RecursiveScriptModule(original_name=LeakyReLU)
+                  (1): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                  (2): RecursiveScriptModule(original_name=LeakyReLU)
+                  (3): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                )
+                (1): RecursiveScriptModule(original_name=Identity)
+              )
+              (paddings): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(original_name=CachedPadding1d)
+                (1): RecursiveScriptModule(original_name=CachedPadding1d)
+              )
+            )
+          )
+          (2): RecursiveScriptModule(
+            original_name=Residual
+            (aligned): RecursiveScriptModule(
+              original_name=AlignBranches
+              (branches): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(
+                  original_name=CachedSequential
+                  (0): RecursiveScriptModule(original_name=LeakyReLU)
+                  (1): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                  (2): RecursiveScriptModule(original_name=LeakyReLU)
+                  (3): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                )
+                (1): RecursiveScriptModule(original_name=Identity)
+              )
+              (paddings): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(original_name=CachedPadding1d)
+                (1): RecursiveScriptModule(original_name=CachedPadding1d)
+              )
+            )
+          )
+        )
+      )
+      (5): RecursiveScriptModule(
+        original_name=UpsampleLayer
+        (net): RecursiveScriptModule(
+          original_name=CachedSequential
+          (0): RecursiveScriptModule(original_name=LeakyReLU)
+          (1): RecursiveScriptModule(original_name=CachedConvTranspose1d)
+        )
+      )
+      (6): RecursiveScriptModule(
+        original_name=ResidualStack
+        (net): RecursiveScriptModule(
+          original_name=CachedSequential
+          (0): RecursiveScriptModule(
+            original_name=Residual
+            (aligned): RecursiveScriptModule(
+              original_name=AlignBranches
+              (branches): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(
+                  original_name=CachedSequential
+                  (0): RecursiveScriptModule(original_name=LeakyReLU)
+                  (1): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                  (2): RecursiveScriptModule(original_name=LeakyReLU)
+                  (3): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                )
+                (1): RecursiveScriptModule(original_name=Identity)
+              )
+              (paddings): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(original_name=CachedPadding1d)
+                (1): RecursiveScriptModule(original_name=CachedPadding1d)
+              )
+            )
+          )
+          (1): RecursiveScriptModule(
+            original_name=Residual
+            (aligned): RecursiveScriptModule(
+              original_name=AlignBranches
+              (branches): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(
+                  original_name=CachedSequential
+                  (0): RecursiveScriptModule(original_name=LeakyReLU)
+                  (1): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                  (2): RecursiveScriptModule(original_name=LeakyReLU)
+                  (3): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                )
+                (1): RecursiveScriptModule(original_name=Identity)
+              )
+              (paddings): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(original_name=CachedPadding1d)
+                (1): RecursiveScriptModule(original_name=CachedPadding1d)
+              )
+            )
+          )
+          (2): RecursiveScriptModule(
+            original_name=Residual
+            (aligned): RecursiveScriptModule(
+              original_name=AlignBranches
+              (branches): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(
+                  original_name=CachedSequential
+                  (0): RecursiveScriptModule(original_name=LeakyReLU)
+                  (1): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                  (2): RecursiveScriptModule(original_name=LeakyReLU)
+                  (3): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                )
+                (1): RecursiveScriptModule(original_name=Identity)
+              )
+              (paddings): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(original_name=CachedPadding1d)
+                (1): RecursiveScriptModule(original_name=CachedPadding1d)
+              )
+            )
+          )
+        )
+      )
+      (7): RecursiveScriptModule(
+        original_name=UpsampleLayer
+        (net): RecursiveScriptModule(
+          original_name=CachedSequential
+          (0): RecursiveScriptModule(original_name=LeakyReLU)
+          (1): RecursiveScriptModule(original_name=CachedConvTranspose1d)
+        )
+      )
+      (8): RecursiveScriptModule(
+        original_name=ResidualStack
+        (net): RecursiveScriptModule(
+          original_name=CachedSequential
+          (0): RecursiveScriptModule(
+            original_name=Residual
+            (aligned): RecursiveScriptModule(
+              original_name=AlignBranches
+              (branches): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(
+                  original_name=CachedSequential
+                  (0): RecursiveScriptModule(original_name=LeakyReLU)
+                  (1): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                  (2): RecursiveScriptModule(original_name=LeakyReLU)
+                  (3): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                )
+                (1): RecursiveScriptModule(original_name=Identity)
+              )
+              (paddings): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(original_name=CachedPadding1d)
+                (1): RecursiveScriptModule(original_name=CachedPadding1d)
+              )
+            )
+          )
+          (1): RecursiveScriptModule(
+            original_name=Residual
+            (aligned): RecursiveScriptModule(
+              original_name=AlignBranches
+              (branches): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(
+                  original_name=CachedSequential
+                  (0): RecursiveScriptModule(original_name=LeakyReLU)
+                  (1): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                  (2): RecursiveScriptModule(original_name=LeakyReLU)
+                  (3): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                )
+                (1): RecursiveScriptModule(original_name=Identity)
+              )
+              (paddings): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(original_name=CachedPadding1d)
+                (1): RecursiveScriptModule(original_name=CachedPadding1d)
+              )
+            )
+          )
+          (2): RecursiveScriptModule(
+            original_name=Residual
+            (aligned): RecursiveScriptModule(
+              original_name=AlignBranches
+              (branches): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(
+                  original_name=CachedSequential
+                  (0): RecursiveScriptModule(original_name=LeakyReLU)
+                  (1): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                  (2): RecursiveScriptModule(original_name=LeakyReLU)
+                  (3): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                )
+                (1): RecursiveScriptModule(original_name=Identity)
+              )
+              (paddings): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(original_name=CachedPadding1d)
+                (1): RecursiveScriptModule(original_name=CachedPadding1d)
+              )
+            )
+          )
+        )
+      )
+      (9): RecursiveScriptModule(
+        original_name=UpsampleLayer
+        (net): RecursiveScriptModule(
+          original_name=CachedSequential
+          (0): RecursiveScriptModule(original_name=LeakyReLU)
+          (1): RecursiveScriptModule(original_name=CachedConvTranspose1d)
+        )
+      )
+      (10): RecursiveScriptModule(
+        original_name=ResidualStack
+        (net): RecursiveScriptModule(
+          original_name=CachedSequential
+          (0): RecursiveScriptModule(
+            original_name=Residual
+            (aligned): RecursiveScriptModule(
+              original_name=AlignBranches
+              (branches): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(
+                  original_name=CachedSequential
+                  (0): RecursiveScriptModule(original_name=LeakyReLU)
+                  (1): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                  (2): RecursiveScriptModule(original_name=LeakyReLU)
+                  (3): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                )
+                (1): RecursiveScriptModule(original_name=Identity)
+              )
+              (paddings): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(original_name=CachedPadding1d)
+                (1): RecursiveScriptModule(original_name=CachedPadding1d)
+              )
+            )
+          )
+          (1): RecursiveScriptModule(
+            original_name=Residual
+            (aligned): RecursiveScriptModule(
+              original_name=AlignBranches
+              (branches): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(
+                  original_name=CachedSequential
+                  (0): RecursiveScriptModule(original_name=LeakyReLU)
+                  (1): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                  (2): RecursiveScriptModule(original_name=LeakyReLU)
+                  (3): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                )
+                (1): RecursiveScriptModule(original_name=Identity)
+              )
+              (paddings): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(original_name=CachedPadding1d)
+                (1): RecursiveScriptModule(original_name=CachedPadding1d)
+              )
+            )
+          )
+          (2): RecursiveScriptModule(
+            original_name=Residual
+            (aligned): RecursiveScriptModule(
+              original_name=AlignBranches
+              (branches): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(
+                  original_name=CachedSequential
+                  (0): RecursiveScriptModule(original_name=LeakyReLU)
+                  (1): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                  (2): RecursiveScriptModule(original_name=LeakyReLU)
+                  (3): RecursiveScriptModule(
+                    original_name=CachedConv1d
+                    (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+                    (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+                  )
+                )
+                (1): RecursiveScriptModule(original_name=Identity)
+              )
+              (paddings): RecursiveScriptModule(
+                original_name=ModuleList
+                (0): RecursiveScriptModule(original_name=CachedPadding1d)
+                (1): RecursiveScriptModule(original_name=CachedPadding1d)
+              )
+            )
+          )
+        )
+      )
+    )
+    (synth): RecursiveScriptModule(
+      original_name=AlignBranches
+      (branches): RecursiveScriptModule(
+        original_name=ModuleList
+        (0): RecursiveScriptModule(
+          original_name=CachedConv1d
+          (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+          (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+        )
+        (1): RecursiveScriptModule(
+          original_name=CachedConv1d
+          (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+          (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+        )
+        (2): RecursiveScriptModule(
+          original_name=NoiseGenerator
+          (net): RecursiveScriptModule(
+            original_name=CachedSequential
+            (0): RecursiveScriptModule(
+              original_name=CachedConv1d
+              (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+              (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+            )
+            (1): RecursiveScriptModule(original_name=LeakyReLU)
+            (2): RecursiveScriptModule(
+              original_name=CachedConv1d
+              (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+              (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+            )
+            (3): RecursiveScriptModule(original_name=LeakyReLU)
+            (4): RecursiveScriptModule(
+              original_name=CachedConv1d
+              (cache): RecursiveScriptModule(original_name=CachedPadding1d)
+              (downsampling_delay): RecursiveScriptModule(original_name=CachedPadding1d)
+            )
+          )
+        )
+      )
+      (paddings): RecursiveScriptModule(
+        original_name=ModuleList
+        (0): RecursiveScriptModule(original_name=CachedPadding1d)
+        (1): RecursiveScriptModule(original_name=CachedPadding1d)
+        (2): RecursiveScriptModule(original_name=CachedPadding1d)
+      )
+    )
+  )
+)>
+Saved wrapped model with encoder/decoder exposed!
