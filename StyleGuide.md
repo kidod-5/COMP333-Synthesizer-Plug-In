@@ -15,52 +15,16 @@ This document serves to collect the organizational and stylistic choice we have 
     - Runs the actual audio engine
     - Uses JUCE to do buffer processing
 - **Frontend:**
-  - React (JavaScript)
-  - JUCE for basic UI
-  - OpenGL for visualizations
-- **Database:** TBD
+  JUCE boiler plate
+
 
 ---
 
 ## 2. Project Structure
 
-### Backend (Python)
+### Backend
 
-The backend will be organized based on the tool usage. Controllers will each be placed in their own file, paths/routes will be in separate files, and supporting modules (e.g., utilities) will be grouped by functionality and named accordingly.
-
-**Example:**
-```
-backend/
-├── controllers/
-│   ├── user_controller.py
-│   └── auth_controller.py
-├── routes/
-│   ├── user_routes.py
-│   └── auth_routes.py
-└── utils/
-    └── validators.py
-```
-
-### Frontend (React)
-
-The frontend will work using a similar organization structure. Pages will be stored in a dedicated folder, utilities in their own folder, contexts in another, and page components grouped together.
-
-**Example:**
-```
-frontend/src/
-├── pages/
-│   ├── HomePage.jsx
-│   └── ProfilePage.jsx
-├── contexts/
-│   └── AuthContext.jsx
-├── utils/
-│   └── api.js
-└── components/
-    ├── NavBar.jsx
-    └── Footer.jsx
-```
-
----
+The project is built in C++ using the standards of C++ according to the JUCE library. The primary project build will use C++ with some python functionality for convenience. There are currently no fleshed out plans for a new UI aside from the JUCE built-in.
 
 ## 3. Naming Conventions
 
@@ -165,18 +129,10 @@ We do not yet have a finalized plan for handling coupling and cohesion. Our goal
 ## 6. Helpful Links
 
 Python: https://peps.python.org/pep-0008/ 
-React: https://airbnb.io/javascript/react/ 
 
 ---
 
-## 7. Whats Left?
 
-- Final choice of database (SQL vs NoSQL)  
-- Error handling strategy  
-- Testing framework and conventions  
-- Deployment standards (lambda backend, vercel/netfily frontend?)
-
----
 
 ## 7. Branching
 

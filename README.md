@@ -23,7 +23,6 @@ Note: Users will need access to the Node/Node Package Manager, Python and JUCE/P
 Note: This project can only be built on Apple Silicon Macs.
 
 Python: https://www.python.org/downloads/ 
-Node(JS): https://nodejs.org/en/download 
 JUCE: https://juce.com/download/ 
 
 
@@ -43,21 +42,6 @@ JUCE: https://juce.com/download/
 
 1. Run ```cmake -B build -G Xcode``` in the MLPlugIn directory. Inside the build folder, you will see the xcode project.
 
-### Running Client folder code:
-
-1. Go to https://nodejs.org and install Node.js, download latest version for your operating system. Skip this step if you already have Node.js installed 
-2. Cd to client folder
-3. Run 'npm install' in terminal to install dependencies 
-4. Now run 'npm run dev'
-5. You will see a link in your terminal that says something like “http://localhost:5173/“. Copy and paste link into your preferred web browser to see the output.
-
-### Running code in server folder:
-
-1. Cd to server folder
-2. Run '. .venv/bin/activate' to activate virtual environment
-3. Run 'pip install flask' to install flask
-4. Run 'flask run'
-5. You should see something like 'Running on http://127.0.0.1:5000'. Copy and paste link into your preferred web browser to see the output.
 
 ### Running Plug-in:
 1. within the build folder, download the .pkg file containing the build for the synthesizer
