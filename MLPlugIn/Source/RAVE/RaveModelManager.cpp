@@ -45,35 +45,6 @@ bool RaveModelManager::loadModel(const std::string &path) {
     }).detach();
     return true;
 }
-//
-//            // Store shared_ptr atomically (RT-safe read)
-//            auto *heapPtr =
-//                new std::shared_ptr<torch::jit::script::Module>(model);
-//            auto old = modelPtrAtomic.exchange(
-//                reinterpret_cast<std::uintptr_t>(heapPtr),
-//                std::memory_order_release);
-//
-//            if (old != 0)
-//                delete reinterpret_cast<
-//                    std::shared_ptr<torch::jit::script::Module> *>(old);
-//            modelLoaded.store(true, std::memory_order_release);
-//
-//            std::cout << "[RAVE] Model loaded, starting worker thread."
-//                      << std::endl;
-//
-//            // Start worker thread AFTER model is loaded
-//            workerThread =
-//                std::thread(&RaveModelManager::workerThreadFunc, this);
-//
-//            return true;
-//
-//        } catch (const std::exception &e) {
-//            std::cerr << "[RAVE] Failed loading model: " << e.what()
-//                      << std::endl;
-//            return false;
-//        }
-//    }).detach();
-//}
 
 void RaveModelManager::pushInputSample(float left, float right,
                                        bool &readyForOutput) {
@@ -105,8 +76,6 @@ bool RaveModelManager::getProcessedSample(float &left, float &right) {
     if (readPos >= RAVE_BLOCK_SIZE) {
         if (!outputFIFO.pop(currentOutputBlock)) {
             // No processed block yet → fail (will fallback to dry audio)
-            //            std::cout << "[RAVE] getProcessedBlock is FALSE." <<
-            //            std::endl;
             return false;
         }
         readPos = 0;
@@ -274,14 +243,6 @@ RaveModelManager::encode(const torch::Tensor &input,
     }
 }
 
-// torch::Tensor RaveModelManager::encode(const torch::Tensor& input,
-// std::shared_ptr<torch::jit::script::Module> model) {
-//     torch::NoGradGuard noGrad;
-//     torch::jit::Module encoder = model->attr("encoder").toModule();
-//     return encoder.forward({input}).toTensor(); // [1, latent_channels,
-//     latent_time]
-// }
-
 void RaveModelManager::modifyLatent(torch::Tensor &z) {
     // Example: add 1.0 to channel 3
     // Guard against out-of-range indexing
@@ -290,10 +251,8 @@ void RaveModelManager::modifyLatent(torch::Tensor &z) {
     //        z[0][3] += 1.0f;
     //    }
     return;
-    // In a real plugin, you could apply sliders or modulators here
 }
 
-torch::Tensor
 RaveModelManager::decode(const torch::Tensor &z,
                          std::shared_ptr<torch::jit::script::Module> model) {
     // We expect `z` in shape [1, latent_channels, latent_time].
@@ -352,14 +311,6 @@ RaveModelManager::decode(const torch::Tensor &z,
     }
 }
 
-// torch::Tensor RaveModelManager::decode(const torch::Tensor& z,
-// std::shared_ptr<torch::jit::script::Module> model) {
-//     torch::NoGradGuard noGrad;
-//     torch::Tensor z_dec = z.transpose(1, 2); // swap channels <-> time
-//     torch::jit::Module decoder = model->attr("decoder").toModule();
-//     return decoder.forward({z_dec}).toTensor(); // [1, channels, time]
-// }
-
 AudioBlock RaveModelManager::tensorToAudioBlock(const torch::Tensor &tensor,
                                                 uint64_t seq) {
     AudioBlock outBlock;
@@ -385,5 +336,6 @@ RaveModelManager::~RaveModelManager() {
         workerThread.join();
 
     std::atomic_store_explicit(&model,
-                               std::shared_ptr<torch::jit::script::Module>{}, std::memory_order_release);
+                               std::shared_ptr<torch::jit::script::Module>{},
+                               std::memory_order_release);
 }

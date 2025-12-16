@@ -16,7 +16,7 @@
 
 class RaveModelManager {
   public:
-    RaveModelManager();// = default;
+    RaveModelManager();
     ~RaveModelManager();
 
     bool loadModel(const std::string &path);
@@ -45,11 +45,6 @@ class RaveModelManager {
     void modifyLatent(torch::Tensor& z);
     torch::Tensor decode(const torch::Tensor& z, std::shared_ptr<torch::jit::script::Module> model);
     AudioBlock tensorToAudioBlock(const torch::Tensor& tensor, uint64_t seq);
-
-
-    // model pointer
-    //std::atomic<std::uintptr_t> modelPtrAtomic{0};
-    //std::atomic<bool> modelLoaded{false};
 
     // inference thread
     std::atomic<bool> keepRunning{true};

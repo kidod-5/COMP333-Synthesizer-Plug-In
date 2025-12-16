@@ -35,17 +35,12 @@ MLPlugInAudioProcessor::MLPlugInAudioProcessor()
                   std::make_unique<juce::AudioParameterChoice>(
                       "noiseType", "Noise Type",
                       juce::StringArray{"White", "Pink"}, 0),
-
-//                  std::make_unique<juce::AudioParameterChoice>(
-//                      "modelChoice", "Model", juce::StringArray{"(none)"}, 0),
                   std::make_unique<juce::AudioParameterFloat>(
                       "wet", "Wet", 0.0f, 1.0f, 1.0f)})
 #endif
 {
     noiseAmplitudeParam = parameters.getRawParameterValue("noiseAmplitude");
     noiseTypeParam = parameters.getRawParameterValue("noiseType");
-
-//    modelChoiceParam = parameters.getRawParameterValue("modelChoice");
     wetParam = parameters.getRawParameterValue("wet");
 }
 
@@ -123,21 +118,6 @@ void MLPlugInAudioProcessor::loadSelectedModel(const juce::String &modelName) {
         modelManager.loadModel(modelFile.getFullPathName().toStdString());
 }
 
-//    auto index = (int)modelChoiceParam->load();
-//
-//    if (auto *choiceParam = dynamic_cast<juce::AudioParameterChoice *>(
-//            parameters.getParameter("modelChoice"))) {
-//        juce::String modelName = choiceParam->choices[index];
-//
-//        juce::File modelFile(
-//            "/Library/Application Support/dynamicsounds/MLPlugIn/models/" +
-//            modelName);
-//
-//        if (modelFile.existsAsFile())
-//            modelManager.loadModel(modelFile.getFullPathName().toStdString());
-//    }
-// }
-
 //==============================================================================
 void MLPlugInAudioProcessor::prepareToPlay(double sampleRate,
                                            int samplesPerBlock) {
@@ -147,9 +127,6 @@ void MLPlugInAudioProcessor::prepareToPlay(double sampleRate,
     modelManager.resetFIFOs();
     if (selectedModelName.isNotEmpty())
         loadSelectedModel(selectedModelName);
-    //    modelManager.loadModel("/Library/Application "
-    //                           "Support/dynamicsounds/MLPlugIn/models/musicnet.ts");
-    //    modelManager.resetFIFOs();
 }
 
 void MLPlugInAudioProcessor::releaseResources() {
