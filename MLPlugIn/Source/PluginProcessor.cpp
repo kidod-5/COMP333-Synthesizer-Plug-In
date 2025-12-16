@@ -120,7 +120,7 @@ void MLPlugInAudioProcessor::loadSelectedModel(const juce::String &modelName) {
         "/Library/Application Support/dynamicsounds/MLPlugIn/models/" +
         modelName);
     if (modelFile.existsAsFile())
-        modelManager.loadAsync(modelFile.getFullPathName().toStdString());
+        modelManager.loadModel(modelFile.getFullPathName().toStdString());
 }
 
 //    auto index = (int)modelChoiceParam->load();
@@ -134,7 +134,7 @@ void MLPlugInAudioProcessor::loadSelectedModel(const juce::String &modelName) {
 //            modelName);
 //
 //        if (modelFile.existsAsFile())
-//            modelManager.loadAsync(modelFile.getFullPathName().toStdString());
+//            modelManager.loadModel(modelFile.getFullPathName().toStdString());
 //    }
 // }
 
@@ -147,7 +147,7 @@ void MLPlugInAudioProcessor::prepareToPlay(double sampleRate,
     modelManager.resetFIFOs();
     if (selectedModelName.isNotEmpty())
         loadSelectedModel(selectedModelName);
-    //    modelManager.loadAsync("/Library/Application "
+    //    modelManager.loadModel("/Library/Application "
     //                           "Support/dynamicsounds/MLPlugIn/models/musicnet.ts");
     //    modelManager.resetFIFOs();
 }

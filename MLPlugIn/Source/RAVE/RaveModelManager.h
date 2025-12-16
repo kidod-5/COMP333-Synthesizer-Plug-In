@@ -16,10 +16,10 @@
 
 class RaveModelManager {
   public:
-    RaveModelManager() = default;
+    RaveModelManager();// = default;
     ~RaveModelManager();
 
-    bool loadAsync(const std::string &path);
+    bool loadModel(const std::string &path);
     
     void pushInputSample(float left, float right, bool &readyForOutput);
     
@@ -39,7 +39,6 @@ class RaveModelManager {
     
 
   private:
-    std::atomic<std::uintptr_t> atomicPtr{0}; // stores raw pointer bits
     void workerThreadFunc();
     torch::Tensor audioBlockToTensor(const AudioBlock& block);
     torch::Tensor encode(const torch::Tensor& input, std::shared_ptr<torch::jit::script::Module> model);
@@ -49,12 +48,13 @@ class RaveModelManager {
 
 
     // model pointer
-    std::atomic<std::uintptr_t> modelPtrAtomic{0};
-    std::atomic<bool> modelLoaded{false};
+    //std::atomic<std::uintptr_t> modelPtrAtomic{0};
+    //std::atomic<bool> modelLoaded{false};
 
     // inference thread
-    std::thread workerThread;
     std::atomic<bool> keepRunning{true};
+    std::shared_ptr<torch::jit::script::Module> model;
+    std::thread workerThread;
 
     // seq counters
     uint64_t nextInputSeq = 0;

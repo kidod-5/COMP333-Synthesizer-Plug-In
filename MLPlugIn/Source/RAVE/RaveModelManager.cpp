@@ -10,57 +10,70 @@
 #include <cstring>
 #include <iostream>
 
-bool RaveModelManager::loadAsync(const std::string &path) {
+bool RaveModelManager::loadModel(const std::string &path) {
     std::thread([this, path]() {
         try {
             std::cout << "[RAVE] Loading model: " << path << std::endl;
 
-            auto model = std::make_shared<torch::jit::script::Module>(
+            auto newModel = std::make_shared<torch::jit::script::Module>(
                 torch::jit::load(path));
 
-            model->eval();
-            
-//            // ******************************
-            
-//            for (const auto &sub : model->named_children()) {
-//                std::cout << "Child module: " << sub.name << std::endl;
-//            }
-//            for (const auto &attr : model->named_attributes()) {
-//                std::cout << "Attribute: " << attr.name << std::endl;
-//            }
-            
-            
-//            // ******************************
-            
+            newModel->eval();
 
-            // Store shared_ptr atomically (RT-safe read)
-            auto *heapPtr =
-                new std::shared_ptr<torch::jit::script::Module>(model);
-            auto old = modelPtrAtomic.exchange(
-                reinterpret_cast<std::uintptr_t>(heapPtr),
-                std::memory_order_release);
+            //            // ******************************
 
-            if (old != 0)
-                delete reinterpret_cast<
-                    std::shared_ptr<torch::jit::script::Module> *>(old);
-            modelLoaded.store(true, std::memory_order_release);
+            //            for (const auto &sub : model->named_children()) {
+            //                std::cout << "Child module: " << sub.name <<
+            //                std::endl;
+            //            }
+            //            for (const auto &attr : model->named_attributes()) {
+            //                std::cout << "Attribute: " << attr.name <<
+            //                std::endl;
+            //            }
 
-            std::cout << "[RAVE] Model loaded, starting worker thread."
-                      << std::endl;
+            //            // ******************************
 
-            // Start worker thread AFTER model is loaded
-            workerThread =
-                std::thread(&RaveModelManager::workerThreadFunc, this);
-
-            return true;
+            std::atomic_store_explicit(&model, newModel,
+                                       std::memory_order_release);
+            resetFIFOs();
+            std::cout << "[RAVE] Model loaded succesfully" << std::endl;
 
         } catch (const std::exception &e) {
             std::cerr << "[RAVE] Failed loading model: " << e.what()
                       << std::endl;
-            return false;
         }
     }).detach();
+    return true;
 }
+//
+//            // Store shared_ptr atomically (RT-safe read)
+//            auto *heapPtr =
+//                new std::shared_ptr<torch::jit::script::Module>(model);
+//            auto old = modelPtrAtomic.exchange(
+//                reinterpret_cast<std::uintptr_t>(heapPtr),
+//                std::memory_order_release);
+//
+//            if (old != 0)
+//                delete reinterpret_cast<
+//                    std::shared_ptr<torch::jit::script::Module> *>(old);
+//            modelLoaded.store(true, std::memory_order_release);
+//
+//            std::cout << "[RAVE] Model loaded, starting worker thread."
+//                      << std::endl;
+//
+//            // Start worker thread AFTER model is loaded
+//            workerThread =
+//                std::thread(&RaveModelManager::workerThreadFunc, this);
+//
+//            return true;
+//
+//        } catch (const std::exception &e) {
+//            std::cerr << "[RAVE] Failed loading model: " << e.what()
+//                      << std::endl;
+//            return false;
+//        }
+//    }).detach();
+//}
 
 void RaveModelManager::pushInputSample(float left, float right,
                                        bool &readyForOutput) {
@@ -92,7 +105,8 @@ bool RaveModelManager::getProcessedSample(float &left, float &right) {
     if (readPos >= RAVE_BLOCK_SIZE) {
         if (!outputFIFO.pop(currentOutputBlock)) {
             // No processed block yet → fail (will fallback to dry audio)
-            std::cout << "[RAVE] getProcessedBlock is FALSE." << std::endl;
+            //            std::cout << "[RAVE] getProcessedBlock is FALSE." <<
+            //            std::endl;
             return false;
         }
         readPos = 0;
@@ -111,24 +125,13 @@ void RaveModelManager::workerThreadFunc() {
     std::cout << "[RAVE] Worker thread started." << std::endl;
 
     while (keepRunning.load(std::memory_order_acquire)) {
-        // Wait until model is loaded
-        if (!modelLoaded.load(std::memory_order_acquire)) {
-            std::this_thread::sleep_for(std::chrono::milliseconds(10));
-            continue;
-        }
 
-        // Load model pointer from atomic raw pointer
-        auto rawPtr =
-            reinterpret_cast<std::shared_ptr<torch::jit::script::Module> *>(
-                modelPtrAtomic.load(std::memory_order_acquire));
-        if (!rawPtr) {
+        auto localModel =
+            std::atomic_load_explicit(&model, std::memory_order_acquire);
+        if (!localModel) {
             std::this_thread::sleep_for(std::chrono::milliseconds(1));
             continue;
         }
-
-        auto model = *rawPtr;
-        if (!model)
-            continue;
 
         // Pop input block from FIFO
         AudioBlock inBlock;
@@ -137,70 +140,68 @@ void RaveModelManager::workerThreadFunc() {
             continue;
         }
 
-//        torch::Tensor inputTensor = audioBlockToTensor(inBlock);
-//        
-//        torch::Tensor z = encode(inputTensor, model);
-//        if (!z.defined() || z.numel() == 0) {
-//            std::cerr << "[RAVE] encode() returned undefined or empty tensor; skipping block.\n";
-//            continue;
-//        }
-//        
-//        modifyLatent(z);
-//        
-//        torch::Tensor outputTensor = decode(z, model);
-//        if (!outputTensor.defined() || outputTensor.numel() == 0) {
-//            std::cerr << "[RAVE] decode() returned undefined or empty tensor; skipping block.\n";
-//            continue;
-//        }
-//        
-//        AudioBlock outBlock = tensorToAudioBlock(outputTensor, inBlock.seq);
-//        outputFIFO.push(outBlock);
+        //        torch::Tensor inputTensor = audioBlockToTensor(inBlock);
+        //
+        //        torch::Tensor z = encode(inputTensor, model);
+        //        if (!z.defined() || z.numel() == 0) {
+        //            std::cerr << "[RAVE] encode() returned undefined or empty
+        //            tensor; skipping block.\n"; continue;
+        //        }
+        //
+        //        modifyLatent(z);
+        //
+        //        torch::Tensor outputTensor = decode(z, model);
+        //        if (!outputTensor.defined() || outputTensor.numel() == 0) {
+        //            std::cerr << "[RAVE] decode() returned undefined or empty
+        //            tensor; skipping block.\n"; continue;
+        //        }
+        //
+        //        AudioBlock outBlock = tensorToAudioBlock(outputTensor,
+        //        inBlock.seq); outputFIFO.push(outBlock);
 
-                // ---- Convert block → tensor ----
-                torch::NoGradGuard noGrad;
-                torch::Tensor input = torch::zeros({1, 1, RAVE_BLOCK_SIZE},
-                torch::kFloat32); memcpy(input[0][0].data_ptr<float>(),
-                inBlock.samplesL.data(),
-                       RAVE_BLOCK_SIZE * sizeof(float));
-        
-                // ---- Inference ----
-                torch::Tensor outputTensor;
-                try {
-                    auto out = model->forward({input});
-                    outputTensor = out.toTensor();
-                } catch (...) {
-                    std::cerr << "[RAVE] Model forward() FAILED.\n";
-                    continue;
-                }
-        
-                // ---- Tensor → block ----
-                AudioBlock outBlock;
-                outBlock.seq = inBlock.seq;
-        
-                auto cpuTensor = outputTensor.to(torch::kCPU);
-                auto ptr = cpuTensor[0][0].data_ptr<float>();
-                memcpy(outBlock.samplesL.data(), ptr, RAVE_BLOCK_SIZE *
-                sizeof(float)); memcpy(outBlock.samplesR.data(), ptr,
-                RAVE_BLOCK_SIZE * sizeof(float)); // duplicate L → R
-        
-                // ---- Push result into output FIFO ----
-                if (!outputFIFO.push(outBlock)) {
-                    // FIFO full → drop block (real-time safe)
-                }
+        // ---- Convert block → tensor ----
+        torch::NoGradGuard noGrad;
+        torch::Tensor input =
+            torch::zeros({1, 1, RAVE_BLOCK_SIZE}, torch::kFloat32);
+        memcpy(input[0][0].data_ptr<float>(), inBlock.samplesL.data(),
+               RAVE_BLOCK_SIZE * sizeof(float));
+
+        // ---- Inference ----
+        torch::Tensor outputTensor;
+        try {
+            auto out = localModel->forward({input});
+            outputTensor = out.toTensor();
+        } catch (...) {
+            std::cerr << "[RAVE] Model forward() FAILED.\n";
+            continue;
+        }
+
+        // ---- Tensor → block ----
+        AudioBlock outBlock;
+        outBlock.seq = inBlock.seq;
+
+        auto cpuTensor = outputTensor.to(torch::kCPU);
+        auto ptr = cpuTensor[0][0].data_ptr<float>();
+
+        memcpy(outBlock.samplesL.data(), ptr, RAVE_BLOCK_SIZE * sizeof(float));
+        memcpy(outBlock.samplesR.data(), ptr,
+               RAVE_BLOCK_SIZE * sizeof(float)); // duplicate L → R
+
+        // ---- Push result into output FIFO ----
+        if (!outputFIFO.push(outBlock)) {
+            // FIFO full → drop block (real-time safe)
+        }
     }
 
     std::cout << "[RAVE] Worker thread ended." << std::endl;
 }
 
 std::shared_ptr<torch::jit::script::Module> RaveModelManager::getModel() const {
-    auto rawPtr =
-        reinterpret_cast<std::shared_ptr<torch::jit::script::Module> *>(
-            modelPtrAtomic.load(std::memory_order_acquire));
-    return rawPtr ? *rawPtr : nullptr;
+    return std::atomic_load(&model);
 }
 
 bool RaveModelManager::isLoaded() const {
-    return atomicPtr.load(std::memory_order_acquire) != 0;
+    return std::atomic_load(&model) != nullptr;
 }
 
 void RaveModelManager::resetFIFOs() {
@@ -220,13 +221,13 @@ torch::Tensor RaveModelManager::audioBlockToTensor(const AudioBlock &block) {
         memcpy(input[0][c].data_ptr<float>(), block.samplesL.data(),
                RAVE_BLOCK_SIZE * sizeof(float));
     }
-    
+
     return input;
 }
 
-torch::Tensor RaveModelManager::encode(
-    const torch::Tensor &input,
-    std::shared_ptr<torch::jit::script::Module> model) {
+torch::Tensor
+RaveModelManager::encode(const torch::Tensor &input,
+                         std::shared_ptr<torch::jit::script::Module> model) {
     // Calls model->run_method("encode", input) and returns a Tensor.
     // Safe extraction if the returned IValue is a tensor, tuple, or list.
     torch::NoGradGuard noGrad;
@@ -259,7 +260,8 @@ torch::Tensor RaveModelManager::encode(
         try {
             return iv.toTensor();
         } catch (...) {
-            std::cerr << "[RAVE] encode(): returned IValue is not a tensor/tuple/list-of-tensor.\n";
+            std::cerr << "[RAVE] encode(): returned IValue is not a "
+                         "tensor/tuple/list-of-tensor.\n";
             return torch::Tensor(); // undefined
         }
 
@@ -272,29 +274,31 @@ torch::Tensor RaveModelManager::encode(
     }
 }
 
-//torch::Tensor RaveModelManager::encode(const torch::Tensor& input, std::shared_ptr<torch::jit::script::Module> model) {
-//    torch::NoGradGuard noGrad;
-//    torch::jit::Module encoder = model->attr("encoder").toModule();
-//    return encoder.forward({input}).toTensor(); // [1, latent_channels, latent_time]
-//}
+// torch::Tensor RaveModelManager::encode(const torch::Tensor& input,
+// std::shared_ptr<torch::jit::script::Module> model) {
+//     torch::NoGradGuard noGrad;
+//     torch::jit::Module encoder = model->attr("encoder").toModule();
+//     return encoder.forward({input}).toTensor(); // [1, latent_channels,
+//     latent_time]
+// }
 
 void RaveModelManager::modifyLatent(torch::Tensor &z) {
     // Example: add 1.0 to channel 3
     // Guard against out-of-range indexing
-//    if (!z.defined()) return;
-//    if (z.dim() >= 2 && z.size(1) > 3) {
-//        z[0][3] += 1.0f;
-//    }
+    //    if (!z.defined()) return;
+    //    if (z.dim() >= 2 && z.size(1) > 3) {
+    //        z[0][3] += 1.0f;
+    //    }
     return;
     // In a real plugin, you could apply sliders or modulators here
 }
 
-
-torch::Tensor RaveModelManager::decode(
-    const torch::Tensor &z,
-    std::shared_ptr<torch::jit::script::Module> model) {
+torch::Tensor
+RaveModelManager::decode(const torch::Tensor &z,
+                         std::shared_ptr<torch::jit::script::Module> model) {
     // We expect `z` in shape [1, latent_channels, latent_time].
-    // Decoder expects channels/time swapped, so transpose before calling decode.
+    // Decoder expects channels/time swapped, so transpose before calling
+    // decode.
     torch::NoGradGuard noGrad;
 
     if (!z.defined()) {
@@ -334,7 +338,8 @@ torch::Tensor RaveModelManager::decode(
         try {
             return iv.toTensor();
         } catch (...) {
-            std::cerr << "[RAVE] decode(): returned IValue is not a tensor/tuple/list-of-tensor.\n";
+            std::cerr << "[RAVE] decode(): returned IValue is not a "
+                         "tensor/tuple/list-of-tensor.\n";
             return torch::Tensor();
         }
 
@@ -347,33 +352,38 @@ torch::Tensor RaveModelManager::decode(
     }
 }
 
-//torch::Tensor RaveModelManager::decode(const torch::Tensor& z, std::shared_ptr<torch::jit::script::Module> model) {
-//    torch::NoGradGuard noGrad;
-//    torch::Tensor z_dec = z.transpose(1, 2); // swap channels <-> time
-//    torch::jit::Module decoder = model->attr("decoder").toModule();
-//    return decoder.forward({z_dec}).toTensor(); // [1, channels, time]
-//}
+// torch::Tensor RaveModelManager::decode(const torch::Tensor& z,
+// std::shared_ptr<torch::jit::script::Module> model) {
+//     torch::NoGradGuard noGrad;
+//     torch::Tensor z_dec = z.transpose(1, 2); // swap channels <-> time
+//     torch::jit::Module decoder = model->attr("decoder").toModule();
+//     return decoder.forward({z_dec}).toTensor(); // [1, channels, time]
+// }
 
-AudioBlock RaveModelManager::tensorToAudioBlock(const torch::Tensor& tensor, uint64_t seq) {
+AudioBlock RaveModelManager::tensorToAudioBlock(const torch::Tensor &tensor,
+                                                uint64_t seq) {
     AudioBlock outBlock;
     outBlock.seq = seq;
 
     auto cpuTensor = tensor.to(torch::kCPU);
     auto ptr = cpuTensor[0][0].data_ptr<float>();
     memcpy(outBlock.samplesL.data(), ptr, RAVE_BLOCK_SIZE * sizeof(float));
-    memcpy(outBlock.samplesR.data(), ptr, RAVE_BLOCK_SIZE * sizeof(float)); // duplicate L → R
+    memcpy(outBlock.samplesR.data(), ptr,
+           RAVE_BLOCK_SIZE * sizeof(float)); // duplicate L → R
 
     return outBlock;
 }
 
+RaveModelManager::RaveModelManager() {
+    workerThread = std::thread(&RaveModelManager::workerThreadFunc, this);
+}
+
 RaveModelManager::~RaveModelManager() {
     keepRunning.store(false, std::memory_order_release);
+
     if (workerThread.joinable())
         workerThread.join();
 
-    // Clean up model pointer
-    auto raw = reinterpret_cast<std::shared_ptr<torch::jit::script::Module> *>(
-        modelPtrAtomic.load());
-    if (raw)
-        delete raw;
+    std::atomic_store_explicit(&model,
+                               std::shared_ptr<torch::jit::script::Module>{}, std::memory_order_release);
 }

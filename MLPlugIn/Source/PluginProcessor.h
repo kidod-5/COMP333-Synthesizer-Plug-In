@@ -78,8 +78,8 @@ class MLPlugInAudioProcessor : public juce::AudioProcessor {
 
   private:
     //==============================================================================
-    torch::jit::script::Module model;
-    std::atomic<bool> isModelLoaded{false};
+//    torch::jit::script::Module model;
+    //std::atomic<bool> isModelLoaded{false};
     RaveModelManager modelManager;
     juce::StringArray availableModels;
     juce::String selectedModelName;
