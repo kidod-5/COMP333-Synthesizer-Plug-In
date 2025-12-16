@@ -92,6 +92,7 @@ bool RaveModelManager::getProcessedSample(float &left, float &right) {
     if (readPos >= RAVE_BLOCK_SIZE) {
         if (!outputFIFO.pop(currentOutputBlock)) {
             // No processed block yet → fail (will fallback to dry audio)
+            std::cout << "[RAVE] getProcessedBlock is FALSE." << std::endl;
             return false;
         }
         readPos = 0;
