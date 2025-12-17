@@ -36,3 +36,6 @@ You will see the VST3 and the AU file in the correct directories:
 
 /Library/Audio/Plug-Ins/VST3/MLPlugin.vst3
 /Library/Audio/Plug-Ins/Components/MLPlugIn.component
+
+
+Finally, ZIP the the ```.pkg``` file (for GitHub)
