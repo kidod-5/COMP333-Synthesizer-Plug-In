@@ -1,0 +1,41 @@
+#!/bin/bash
+set -euo pipefail
+
+MODEL_DIR="/Library/Application Support/dynamicsounds/MLPlugin/models"
+mkdir -p "$MODEL_DIR"
+
+BASE="https://play.forum.ircam.fr/rave-vst-api/get_model"
+
+MODELS=(
+  "sol_full"
+  "sol_ordinario_fast"
+  "musicnet"
+  "isis"
+  "vintage"
+  "percussion"
+  "nasa"
+  "darbouka_onnx"
+  "VCTK"
+)
+
+echo "MLPlugin postinstall: downloading RAVE models..."
+
+for m in "${MODELS[@]}"; do
+  OUT="$MODEL_DIR/$m.ts"
+  PART="$OUT.part"
+
+  if [ -f "$OUT" ] && [ $(stat -f%z "$OUT") -gt 102400 ]; then
+    echo "✔ $m already installed"
+    continue
+  fi
+
+  echo "↓ Downloading $m..."
+  curl -L --fail --retry 8 --retry-delay 2 --retry-all-errors \
+       -C - "$BASE/$m" -o "$PART"
+
+  mv -f "$PART" "$OUT"
+done
+
+echo "MLPlugin postinstall: done."
+exit 0
+
