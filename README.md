@@ -4,6 +4,11 @@ ML backend Music synthesizing tool
 Milestone 1: https://docs.google.com/document/d/1Ckj0KGufHaUpQLS1IokM4mh54LC3KgSbybEukBqg-gc/edit?tab=t.0#heading=h.3vjma1ynrl6f
 Style guide: https://github.com/kidod-5/COMP333-Synthesizer-Plug-In/blob/main/StyleGuide.md
 
+## Introduction
+Welcome to ML-FX. This project uses the JUCE library in combination with LibTorch and the RAVE family of machine learning models to explore an alternative approach to sound engineering. Our goal was to create a plug-in capable of augmenting audio using a slim, but growing, set of sound-based models, allowing music to be enhanced in ways that keep creative control firmly in the hands of artists. At the same time, the tool aims to automate and speed up sound experimentation, particularly for creators who may not have the resources to develop or modify sounds from scratch.
+
+We prioritized user freedom throughout the design process and emphasize that this tool is meant to complement existing projects rather than function as a standalone or definitive sound. ML-FX is intended to expand creative possibilities, not replace them. Ultimately, we hope this tool helps raise the creative ceiling for musicians and producers and contributes to the future direction of music editing software.
+
 ## User Instructions
 
 We have a very basic version of the plugin available to the public. To install, simply download the .pkg file, and follow the onscreen instructions. This plugin is available only for Mac DAWs.
