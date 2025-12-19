@@ -47,13 +47,6 @@ MLPlugInAudioProcessorEditor::MLPlugInAudioProcessorEditor(
         audioProcessor.loadSelectedModel(selectedModel);
     };
 
-    //    modelAttachment = std::make_unique<
-    //        juce::AudioProcessorValueTreeState::ComboBoxAttachment>(
-    //        audioProcessor.parameters, "modelChoice", modelBox);
-
-    //     THIS GOES *RIGHT HERE*
-    //    modelBox.onChange = [this]() { audioProcessor.loadSelectedModel(); };
-
     // Ensure slider reflects the parameter value on creation
     noiseSlider.setValue(*audioProcessor.noiseAmplitudeParam,
                          juce::dontSendNotification);

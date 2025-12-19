@@ -11,7 +11,7 @@
 #include <cstdint>
 
 constexpr int RAVE_BLOCK_SIZE =
-    16384; // From the test_rave.py script (tried different numbers
+    16384; // From the test_rave.py script (tried different numbers)
 
 struct AudioBlock {
     uint64_t seq = 0;

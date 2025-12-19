@@ -16,45 +16,34 @@
 
 class RaveModelManager {
   public:
-    RaveModelManager() = default;
+    RaveModelManager();
     ~RaveModelManager();
 
-    bool loadAsync(const std::string &path);
-    
+    bool loadModel(const std::string &path);
     void pushInputSample(float left, float right, bool &readyForOutput);
-    
     bool getProcessedSample(float &left, float &right);
-
     std::shared_ptr<torch::jit::script::Module> getModel() const;
-    
-    bool isLoaded() const;
-    
     void resetFIFOs();
+
+//    bool isLoaded() const;
     
 //    torch::Tensor encode(const torch::Tensor& audio);
-//    
 //    torch::Tensor decode(const torch::Tensor& latent);
-//    
 //    void tweakLatent(torch::Tensor& latent, int channel, float value);
     
 
   private:
-    std::atomic<std::uintptr_t> atomicPtr{0}; // stores raw pointer bits
     void workerThreadFunc();
-    torch::Tensor audioBlockToTensor(const AudioBlock& block);
-    torch::Tensor encode(const torch::Tensor& input, std::shared_ptr<torch::jit::script::Module> model);
-    void modifyLatent(torch::Tensor& z);
-    torch::Tensor decode(const torch::Tensor& z, std::shared_ptr<torch::jit::script::Module> model);
-    AudioBlock tensorToAudioBlock(const torch::Tensor& tensor, uint64_t seq);
-
-
-    // model pointer
-    std::atomic<std::uintptr_t> modelPtrAtomic{0};
-    std::atomic<bool> modelLoaded{false};
+//    torch::Tensor audioBlockToTensor(const AudioBlock& block);
+//    torch::Tensor encode(const torch::Tensor& input, std::shared_ptr<torch::jit::script::Module> model);
+//    void modifyLatent(torch::Tensor& z);
+//    torch::Tensor decode(const torch::Tensor& z, std::shared_ptr<torch::jit::script::Module> model);
+//    AudioBlock tensorToAudioBlock(const torch::Tensor& tensor, uint64_t seq);
 
     // inference thread
-    std::thread workerThread;
     std::atomic<bool> keepRunning{true};
+    std::shared_ptr<torch::jit::script::Module> model;
+    std::thread workerThread;
 
     // seq counters
     uint64_t nextInputSeq = 0;

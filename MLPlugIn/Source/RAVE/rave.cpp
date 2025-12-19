@@ -55,20 +55,6 @@ void printModelInfo(const torch::jit::script::Module &model,
 
 torch::jit::script::Module
 loadTorchScriptModelAsync(const std::string &model_path) {
-    //    std::thread([this, model_path]() {
-    //        try {
-    //            auto newModel =
-    //            std::make_shared<torch::jit::script::Module>(torch::jit::load(model_path));
-    //            current_Model.store(newModel);
-    //            std::cout << "Module loaded and swapped: " << model_path <<
-    //            std::endl;
-    //        } catch (...) {
-    //            std::cerr << "FAILED loading model: " << model_path <<
-    //            std::endl;
-    //        }
-    //    }).detach();
-    //}
-
     torch::jit::script::Module model;
 
     try {

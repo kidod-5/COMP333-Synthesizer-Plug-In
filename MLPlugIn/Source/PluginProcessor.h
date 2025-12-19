@@ -41,12 +41,10 @@ class MLPlugInAudioProcessor : public juce::AudioProcessor {
     constexpr static int blockSize = 2048;
 
     //==============================================================================
-    //    float noiseAmplitude = 0.2f;
     std::atomic<float> *noiseAmplitudeParam = nullptr;
     juce::AudioProcessorValueTreeState parameters;
     std::atomic<float> *noiseTypeParam =
         nullptr; // 0 = white noise, 1 = pink noise
-//    std::atomic<float> *modelChoiceParam = nullptr;
     std::atomic<float> *wetParam = nullptr;
 
     //==============================================================================
@@ -78,8 +76,6 @@ class MLPlugInAudioProcessor : public juce::AudioProcessor {
 
   private:
     //==============================================================================
-    torch::jit::script::Module model;
-    std::atomic<bool> isModelLoaded{false};
     RaveModelManager modelManager;
     juce::StringArray availableModels;
     juce::String selectedModelName;
