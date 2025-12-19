@@ -1,7 +1,6 @@
 # COMP333-Synthesizer-Plug-In
 ML backend Music synthesizing tool
 
-Milestone 1: https://docs.google.com/document/d/1Ckj0KGufHaUpQLS1IokM4mh54LC3KgSbybEukBqg-gc/edit?tab=t.0#heading=h.3vjma1ynrl6f
 Style guide: https://github.com/kidod-5/COMP333-Synthesizer-Plug-In/blob/main/StyleGuide.md
 
 ## Introduction
