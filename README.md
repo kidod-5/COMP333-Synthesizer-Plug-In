@@ -32,7 +32,7 @@ JUCE: https://juce.com/download/
 
 ### To set up libtorch
 
-1. Run the ```install_dependencies.sh``` script. This will install libtorch in the MLPlugIn/dependencies directory.
+1. Run the ```install_dependencies.sh``` script. This will install libtorch in the ```MLPlugIn/dependencies``` directory.
 
 ### To set up Xcode Project
 
