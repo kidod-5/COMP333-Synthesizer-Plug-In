@@ -8,6 +8,8 @@ Welcome to ML-FX. This project uses the JUCE library in combination with LibTorc
 
 We prioritized user freedom throughout the design process and emphasize that this tool is meant to complement existing projects rather than function as a standalone or definitive sound. ML-FX is intended to expand creative possibilities, not replace them. Ultimately, we hope this tool helps raise the creative ceiling for musicians and producers and contributes to the future direction of music editing software.
 
+Check out a short [demo](https://drive.google.com/file/d/1OhdkS0LKwacA1xWwOV8FzutfCgyG6jlo/view?usp=sharing)! 
+
 ## User Instructions
 
 Downlaod the MLPlugIn-Installer packahge, and follow the onscreen instructions. You're ready to go!
