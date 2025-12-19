@@ -11,16 +11,7 @@ We prioritized user freedom throughout the design process and emphasize that thi
 
 ## User Instructions
 
-We have a very basic version of the plugin available to the public. To install, simply download the .pkg file, and follow the onscreen instructions. This plugin is available only for Mac DAWs.
-
-Note for Peer Reviewers: To be able to use this, you must open a DAW. Most Macs come pre installed with GarageBand, and you should be able to access it there under audio effects in your track mixer.
-
-Right now, the plugin only works with one pretrained model.
-Please install it from this [link](https://play.forum.ircam.fr/rave-vst-api/get_model/vintage) and store the downloaded file in ```"/Library/Application Support/dynamicsounds/MLPlugIn/models/vintage.ts"```.
-You will need admin priviledges to do this.
-After installing the file you can run the plugin on an audio track in your DAW of choice. 
-
-Apologies for how difficult it is to do this right now. We will be making it easier in the future!
+Downlaod the MLPlugIn-Installer packahge, and follow the onscreen instructions. You're ready to go!
 
 ## Developer Instructions
 
@@ -28,7 +19,8 @@ Note: Users will need access to the Node/Node Package Manager, Python and JUCE/P
 Note: This project can only be built on Apple Silicon Macs.
 
 Python: https://www.python.org/downloads/ 
-JUCE: https://juce.com/download/ 
+
+JUCE: https://juce.com/download/
 
 
 1. Open the GitHub repository
